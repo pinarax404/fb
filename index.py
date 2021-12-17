@@ -10,6 +10,12 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+class Element_by_id:
+    def __init__(self, id_text):
+        self.id_text = id_text
+    def __call__(self, f, *args, **kwargs):
+        return 'id' in f.attrs and f.attrs['id'] == self.id_text
+
 class create:
     def __init__(self):
         logging.basicConfig(
@@ -37,7 +43,7 @@ class create:
             mechanize._http.HTTPRefreshProcessor(),
             max_time = 5
         )
-        br.addheaders = [('User-agent', "Mozilla/5.0 (Linux; Android 5.0; ASUS_T00G Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36")]
+        br.addheaders = [('User-agent', "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) WebKit/8611 (KHTML, like Gecko) Mobile/18G82 [FBAN/FBIOS;FBDV/iPhone12,1;FBMD/iPhone;FBSN/iOS;FBSV/14.7.1;FBSS/2;FBID/phone;FBLC/en_US;FBOP/5;FBIA/FBIOS]")]
 
         return br
 
@@ -65,7 +71,7 @@ class create:
         logging.info('create a facebook account')
         self.br.open('https://mbasic.facebook.com/reg/?cid=102&refid=8')
 
-        self.br.select_form(predicate=lambda f: f.attrs.get('id', None) == 'mobile-reg-form')
+        self.br.select_form(predicate=Element_by_id("mobile-reg-form"))
         self.br.form['firstname'] = data['firstname'] + ' ' + data['lastname']
         try:
             self.br.form['reg_email__'] = email
@@ -80,17 +86,14 @@ class create:
         self.br.form['reg_passwd__'] = data['password']
         self.br.submit()
 
-        if "captcha" in self.br.response().read().lower():
-            sys.exit(logging.error("You are caught making fake accounts and spamming users. sorry, try tomorrow again ... ok bye bye\n"))
-        for i in range(3):
-            self.br.select_form(nr=0)
-            self.br.submit()
-
-        gagal = re.findall(r'id="registration-error"><div class="bl">(.+?)<', self.br.response().read())
-        if gagal:
-            logging.error(gagal[0])
-            return False
-        return True
+        cp = re.findall(r'checkpoint', self.br.response().read())
+        err = re.findall(r'error', self.br.response().read())
+        if cp:
+            logging.error('Checkpoint')
+        elif err:
+            logging.error('Create Error')
+        else:
+            logging.info(self.br.response().read())
 
     def _check_email_fb(self, email):
         self.br.open('https://mbasic.facebook.com/login/identify')
@@ -127,7 +130,8 @@ class create:
     # mail
     def _open_temp_mail(self):
         res = requests.get('https://fakemail.io/api/v1/mails/email/get/?email=').json()
-        return res['email']
+        #return res['email'].split('@')[0] + '@gmail.com'
+        return '+6285748541236'
 
     def _read_message(self, text):
         x = re.findall(r'baslik">(\d+)\s', text)
