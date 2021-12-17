@@ -20,8 +20,6 @@ class create:
             format='\r%(levelname)s:%(name)s: %(message)s'
         )
         self.create_total = 0
-        self.blacklist_email = [] #'@datasoma', '@geroev', '@cliptik', '@khtyler', '@parcel4']
-        self.temp_email_url = 'https://tempmail.net'
 
         self.__main__()
 
@@ -46,12 +44,12 @@ class create:
     # info account
     def _get_info_account(self):
         logging.info('looking for account information')
-        res = requests.get('https://randomuser.me/api').json()
+        res = requests.get('https://randomuser.me/api/?gender=female&nat=us').json()
 
         pwd = res['results'][0]['login']['password']
         return {
             'username':  res['results'][0]['login']['username'],
-            'password':  pwd + '-zvtyrdt.id' if len(pwd) < 6 else pwd,
+            'password':  'badaklepas123',
             'firstname': res['results'][0]['name']['first'],
             'lastname':  res['results'][0]['name']['last'],
             'gender':    '1' if res['results'][0]['gender'] == 'female' else '2',
@@ -128,10 +126,8 @@ class create:
 
     # mail
     def _open_temp_mail(self):
-        return self.br.open(self.temp_email_url).read()
-
-    def _find_email(self, text):
-        return re.findall(r'value="(.+@.+)"', text)[0]
+        res = requests.get('https://fakemail.io/api/v1/mails/email/get/?email=').json()
+        return res['email']
 
     def _read_message(self, text):
         x = re.findall(r'baslik">(\d+)\s', text)
@@ -150,12 +146,8 @@ class create:
 
             email_found, check, max_ = False, True, 0
             while True:
-                res_em = self._open_temp_mail()
-                self._mail = self._find_email(res_em)
-
-                if '@' + self._mail.split('@')[1].split('.')[0] in self.blacklist_email:
-                    logging.error('blacklist email: %s', self._mail)
-                    break
+                self._mail = self._open_temp_mail()
+                res_em = self.br.open('https://fakemail.io/api/v1/mails/').read()
 
                 if not email_found:
                     logging.info('obtained email: %s', self._mail)
