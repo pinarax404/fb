@@ -65,7 +65,7 @@ class create:
         logging.info('create a facebook account')
         self.br.open('https://mbasic.facebook.com/reg/?cid=102&refid=8')
 
-        self.br.select_form(nr=0)
+        self.br.select_form(predicate=lambda f: f.attrs.get('id', None) == 'mobile-reg-form')
         self.br.form['firstname'] = data['firstname'] + ' ' + data['lastname']
         try:
             self.br.form['reg_email__'] = email
