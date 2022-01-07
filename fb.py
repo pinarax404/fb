@@ -19,7 +19,7 @@ class create:
         )
         self.create_total = 0
         self.blacklist_email = [] #'@datasoma', '@geroev', '@cliptik', '@khtyler', '@parcel4']
-        self.temp_email_url = 'https://tempmail.net'
+        self.temp_email_url = 'https://www.gmailnator.com/inbox/#mgowddf9nl@gmailnator.com'
 
         self.__main__()
 
@@ -49,7 +49,7 @@ class create:
         pwd = res['results'][0]['login']['password']
         return {
             'username':  res['results'][0]['login']['username'],
-            'password':  pwd + '-zvtyrdt.id' if len(pwd) < 6 else pwd,
+            'password':  'badaklepas123',
             'firstname': res['results'][0]['name']['first'],
             'lastname':  res['results'][0]['name']['last'],
             'gender':    '1' if res['results'][0]['gender'] == 'female' else '2',
