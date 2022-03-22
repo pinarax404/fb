@@ -22,7 +22,7 @@ class create:
         )
         self.create_total = 0
         self.blacklist_email = [] #'@datasoma', '@geroev', '@cliptik', '@khtyler', '@parcel4']
-        self.temp_email_url = 'https://tempail.com/en/'
+        self.temp_email_url = 'https://csrng.net/csrng/csrng.php?min=111111111&max=999999999'
 
         self.__main__()
 
@@ -96,10 +96,8 @@ class create:
 
     # mail
     def _open_temp_mail(self):
-        return self.br.open(self.temp_email_url).read()
-
-    def _find_email(self, text):
-        return re.findall(r'data-clipboard-text="(.+@.+)"', text)[0]
+        res = requests.get(self.temp_email_url).json()
+        return '+6285' + str(res[0]['random'])
 
     def _read_message(self, text):
         x = re.findall(r'baslik">(\d+)\s', text)
@@ -118,12 +116,7 @@ class create:
 
             email_found, check, max_ = False, True, 0
             while True:
-                res_em = self._open_temp_mail()
-                self._mail = self._find_email(res_em)
-
-                if '@' + self._mail.split('@')[1].split('.')[0] in self.blacklist_email:
-                    logging.error('blacklist email: %s', self._mail)
-                    break
+                self._mail = self._open_temp_mail()
 
                 if not email_found:
                     logging.info('obtained email: %s', self._mail)
