@@ -112,27 +112,25 @@ class create:
     def __main__(self):
         while True:
             self.br = self._browser_options()
-            logging.info('searching new emails')
+            logging.info('Generating Number')
 
             email_found, check, max_ = False, True, 0
             while True:
                 self._mail = self._open_temp_mail()
 
                 if not email_found:
-                    logging.info('obtained email: %s', self._mail)
+                    logging.info('Phone Number: %s', self._mail)
                     if self._check_email_fb(self._mail):
                         if self._create_account_facebook(self._mail):
-                            logging.info('waiting for incoming email')
                             email_found = True
                 if max_ == 10:
                     logging.error('no response !')
                     break
                 if check and email_found:
-                    if self._read_message(res_em):
-                        self.create_total += 1
-                        logging.info('account created:\n\t   email: %s\n\t   password: %s', self._mail, self._password)
-                        self._save_to_file(self._mail, self._password)
-                        check = False
+                    self.create_total += 1
+                    logging.info('account created:\n\t   number: %s\n\t   password: %s', self._mail, self._password)
+                    self._save_to_file(self._mail, self._password)
+                    check = False
                     max_ += 1
                 else: break
 
