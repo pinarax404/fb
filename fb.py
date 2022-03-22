@@ -136,7 +136,6 @@ class create:
 
                 if not email_found:
                     logging.info('obtained email: %s', self._mail)
-                    if self._check_email_fb(self._mail):
                         if self._create_account_facebook(self._mail):
                             logging.info('waiting for incoming email')
                             email_found = True
