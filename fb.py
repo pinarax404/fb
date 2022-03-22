@@ -40,7 +40,7 @@ class create:
             mechanize._http.HTTPRefreshProcessor(),
             max_time = 5
         )
-        br.addheaders = [('User-agent', "Mozilla/5.0 (Linux; Android 5.0; ASUS_T00G Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36")]
+        br.addheaders = [('User-agent', "SAMSUNG-GT-S3850/1.0 SHP/VPP/R5 Dolfin/2.0 NexPlayer/3.0 SMM-MMS/1.2.0 profile/MIDP-2.1 configuratio")]
 
         return br
 
@@ -52,7 +52,7 @@ class create:
         pwd = res['results'][0]['login']['password']
         return {
             'username':  res['results'][0]['login']['username'],
-            'password':  pwd + '0000' if len(pwd) < 6 else pwd,
+            'password':  'badaklepas123',
             'firstname': res['results'][0]['name']['first'],
             'lastname':  res['results'][0]['name']['last'],
             'gender':    '1' if res['results'][0]['gender'] == 'female' else '2',
@@ -66,7 +66,7 @@ class create:
         self._password = data['password']
         logging.info('name: %s', data['firstname'] + ' ' + data['lastname'])
         logging.info('create a facebook account')
-        self.br.open('https://mbasic.facebook.com/reg/?cid=102&refid=8')
+        self.br.open('https://mobile.facebook.com/reg/?cid=103&refsrc=deprecated&soft=hjk')
 
         self.br.select_form(nr=0)
         self.br.form['firstname'] = data['firstname'] + ' ' + data['lastname']
@@ -84,16 +84,16 @@ class create:
         self.br.submit()
 
         if "kesalahan" in self.br.response().read().lower():
-            sys.exit(logging.error("You are caught making fake accounts and spamming users. sorry, try tomorrow again ... ok bye bye\n"))
+            sys.exit(logging.error("Kesalahan....\n"))
 
         if "error" in self.br.response().read().lower():
-            sys.exit(logging.error("You are caught making fake accounts and spamming users. sorry, try tomorrow again ... ok bye bye\n"))
+            sys.exit(logging.error("Error....\n"))
 
         if "checkpoint" in self.br.response().read().lower():
-            sys.exit(logging.error("You are caught making fake accounts and spamming users. sorry, try tomorrow again ... ok bye bye\n"))
+            sys.exit(logging.error("Checkpoint...\n"))
 
         if "spam" in self.br.response().read().lower():
-            sys.exit(logging.error("You are caught making fake accounts and spamming users. sorry, try tomorrow again ... ok bye bye\n"))
+            sys.exit(logging.error("IP Banned....\n"))
 
         for i in range(3):
             self.br.select_form(nr=0)
