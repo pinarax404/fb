@@ -92,15 +92,6 @@ class create:
         return True
 
     def _check_email_fb(self, email):
-        r = requests.post('https://mbasic.facebook.com/login/identify/?ctx=recover',
-                data={ 'email': email }
-            )
-
-        soup = bs4.BeautifulSoup(r.text, 'html.parser')
-        if soup.title.text != 'Temukan Akun Anda':
-            logging.error('registered email!')
-            return False
-
         return True
 
     # mail
@@ -136,6 +127,7 @@ class create:
 
                 if not email_found:
                     logging.info('obtained email: %s', self._mail)
+                    if self._check_email_fb(self._mail):
                         if self._create_account_facebook(self._mail):
                             logging.info('waiting for incoming email')
                             email_found = True
