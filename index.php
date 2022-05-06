@@ -41,7 +41,7 @@ function php_ajax($mail, $name) {
     $respons_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
     
-    if(strpos($respons_data, 'href="checkpoint') !== false) {
+    if(strpos($respons_data, 'action="/checkpoint/') == true) {
         echo 'Checkpoint' . "\n";
     } else {
         echo $respons_data;
