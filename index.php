@@ -20,7 +20,7 @@ if(trim($mail) !== null) {
 
 function php_ajax($mail, $name) {
     
-    $data = 'lsd=&jazoest=2910&ccp=2&reg_instance=&submission_request=true&helper=&reg_impression_id=&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$name.'&reg_email__='.$mail'&sex=1&custom_gender=&did_use_age=false&birthday_day=10&birthday_month=1&birthday_year=2002&age_step_input=&reg_passwd__=badaklepas111&submit=Sign+Up';
+    $data = 'lsd=&jazoest=2910&ccp=2&reg_instance=&submission_request=true&helper=&reg_impression_id=&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$name.'&reg_email__='.$mail.'&sex=1&custom_gender=&did_use_age=false&birthday_day=10&birthday_month=1&birthday_year=2002&age_step_input=&reg_passwd__=badaklepas111&submit=Sign+Up';
     
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, 'https://m.facebook.com/reg/submit/?cid=103');
