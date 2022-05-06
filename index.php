@@ -26,7 +26,7 @@ function php_ajax($mail, $name) {
     curl_setopt($ch, CURLOPT_URL, 'https://m.facebook.com/reg/submit/?cid=103');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'content-type: application/x-www-form-urlencoded',
-        'user-agent: Opera/9.80 (Android; Opera Mini/20.0.2254/107.70; U; ޭ) Presto/2.12.423 Version/12.16'
+        'user-agent: Opera/9.80 (Android; Opera Mini/20.0.2254/107.70; U;) Presto/2.12.423 Version/12.16'
     ));
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookiesfb.txt');
