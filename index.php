@@ -26,10 +26,11 @@ function php_ajax($mail, $name) {
     curl_setopt($ch, CURLOPT_URL, 'https://mbasic.facebook.com/reg/submit/?cid=103');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'content-type: application/x-www-form-urlencoded',
-        'user-agent: Mozilla/5.0 (Linux; Android 5.0; ASUS_T00G Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36'
+        'user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
     ));
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookiesfb.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookiesfb.txt');
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
