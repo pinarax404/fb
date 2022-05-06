@@ -20,10 +20,10 @@ if(trim($mail) !== null) {
 
 function php_ajax($mail, $name) {
     
-    $data = 'lsd=AVrxld3BMYY&jazoest=2965&ccp=2&reg_instance=HI11Ypj22hrTxWLR734IvG6A&submission_request=true&helper=&reg_impression_id=839c9f18-db27-44b8-8244-b38e9098f0ae&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$name.'&reg_email__='.$mail.'&sex=1&custom_gender=&did_use_age=false&birthday_day=6&birthday_month=5&birthday_year=1999&age_step_input=&reg_passwd__=badaklepas&submit=Sign+Up';
+    $data = 'jazoest=2998&lsd=AVrxld3BVSw&firstname=anna&lastname=zaza&reg_email__='.$email.'&reg_email_confirmation__='.$email.'&reg_passwd__=badaklepas123&birthday_day=6&birthday_month=5&birthday_year=2002&birthday_age=&did_use_age=false&sex=1&preferred_pronoun=&custom_gender=&referrer=&asked_to_login=0&use_custom_gender=&terms=on&ns=0&ri=b3226a2c-5845-408c-abf9-5b80bf2cf7aa&action_dialog_shown=&ignore=captcha&locale=en_GB&reg_instance=HI11Ypj22hrTxWLR734IvG6A&captcha_persist_data=AZly9U7w1IJH3TvBiB7ZwzGN0fn1am5atggZSoQiVvpxNmiSTZZ2J_Hn96-7uPbMTF-J7E7XmRTMJ67j3AZMY07XDX6zWAQLphnXT55-gIeHnv6zTm0Dp9q3CmjkWfp6LnKq3srlZnc0Ob1zED5ti7O0yG7MUmhmWoKPqMataO8kiy3VXZDIElAh10jD3LzDM6wtrx5kKRikZTgN8kpJZs5S3WXT1MaXHtX8WrpNnOQlFjpMXu89X7jBdI7xaAVx4T6tqK5AsveH_St4FUXSk6h1_opURN9xfmQUYzT2N7a5d-zLOlenh6vkJvnNXG3tBoKCpZsEuTTu-ZlGFV_SuOuqabj9hz3-VG9vVosO3vnaUs-xXbUaxLHc5exms0Fdv40&captcha_response=&__user=0&__a=1&__dyn=7xe6FomK36Q5E5ObwKBWo5O12wAxu13wqovzEdEc8uw9-3K4o1j8hwem0nCq1ewcG0KEswaq0yE5ufz81sbzo5-0me2218w5uwbO7E2swdq0Ho2ewnE3fw5rwSyE1582ZwrU&__csr=&__req=9&__hs=19118.BP%3ADEFAULT.2.0.0.0.&dpr=1&__ccg=EXCELLENT&__rev=1005467977&__s=gabrkb%3A2lvqx2%3Ahl4tsw&__hsi=7094739152151910489-0&__comet_req=0&__spin_r=1005467977&__spin_b=trunk&__spin_t=1651872683';
     
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'https://m.facebook.com/reg/submit/?cid=103');
+    curl_setopt($ch, CURLOPT_URL, 'https://www.facebook.com/ajax/register.php');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'content-type: application/x-www-form-urlencoded',
         'user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
