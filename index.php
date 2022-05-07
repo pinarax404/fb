@@ -18,15 +18,15 @@ if(trim($mail) !== null) {
     die();
 }
 
-function php_ajax($mail, $name) {
+function php_ajax($mail, $name1, $name2) {
     
-    $data = 'lsd=&jazoest=2910&ccp=2&reg_instance=&submission_request=true&helper=&reg_impression_id=&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$name.'&reg_email__='.$mail.'&sex=1&custom_gender=&did_use_age=false&birthday_day=10&birthday_month=1&birthday_year=2002&age_step_input=&reg_passwd__=badaklepas111&submit=Sign+Up';
+    $data = 'lsd=AVrzaUa2khY&jazoest=21016&ccp=2&reg_instance=Xi92YmDws84GGNBn4Lqqfmdb&submission_request=true&helper=&reg_impression_id=818c417c-2220-427e-91a5-1aad57f1b6c4&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$name1.'+&lastname='.$name2.'&reg_email__'.$mail.'&sex=1&custom_gender=&did_use_age=false&birthday_month=5&birthday_day=7&birthday_year=2002&age_step_input=&reg_passwd__=badaklepas&submit=Sign+Upp';
     
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'https://m.facebook.com/reg/submit/?cid=103');
+    curl_setopt($ch, CURLOPT_URL, 'https://mbasic.facebook.com/reg/submit/?cid=103');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'content-type: application/x-www-form-urlencoded',
-        'user-agent: Opera/9.80 (Android; Opera Mini/20.0.2254/107.70; U;) Presto/2.12.423 Version/12.16'
+        'user-agent: Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko; googleweblight) Chrome/38.0.1025.166 Mobile Safari/535.19'
     ));
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookiesfb.txt');
