@@ -55,6 +55,7 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
                 $get_fb_check = curl_attr('https://m.facebook.com/login/save-device', false, $useragent, false, true);
                 if($get_fb_check !== false && strpos($get_fb_check, 'method="post" action="/checkpoint/1501092823525') !== false) {
                     echo "\033[1;33mCheckpoint\033[1;37m\n";
+                    soot_start();
                 } else {
                     echo $get_fb_check;
                 }
