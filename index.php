@@ -50,7 +50,7 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
             $reg_impression_id = replace_string('name="reg_impression_id" value="', '"', $get_accept_cookies);
 
             $data_post_fb_1 = 'lsd=AVoCoLRQkSc&jazoest=2968&ccp=2&reg_instance=WfR2YsaCnr7apgydhHme_537&submission_request=true&helper=&reg_impression_id=393c6b4a-b7eb-4927-9a08-c23a04c1358b&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$email.'&sex=1&custom_gender=&did_use_age=false&birthday_day=7&birthday_month=5&birthday_year=1999&age_step_input=&reg_passwd__='.$default_password.'&submit=Sign+Up';
-            $post_fb_1 = curl_attr('https://mbasic.facebook.com/reg/submit/?cid=103', $data_post_fb_1, $useragent, false, false);
+            $post_fb_1 = curl_attr('https://mobile.facebook.com/reg/submit/?cid=103', $data_post_fb_1, $useragent, false, false);
             if($post_fb_1 !== false && strpos($post_fb_1, 'method="post" action="/checkpoint/') !== false) {
                 echo "\033[1;31mCheckpoint\033[1;37m\n";
                 soot_start();
