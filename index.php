@@ -29,8 +29,8 @@ function php_ajax($mail, $name1) {
         'user-agent: Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko; googleweblight) Chrome/38.0.1025.166 Mobile Safari/535.19'
     ));
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookiesfb.txt');
-    curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookiesfb.txt');
+    //curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookiesfb.txt');
+    //curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookiesfb.txt');
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
