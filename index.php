@@ -40,8 +40,8 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
 
         $get_proxy_cookies = curl_attr('https://mbasic.facebook.com/reg/submit/', false, $useragent, true, false);
         if($get_proxy_cookies !== false  && strpos($get_proxy_cookies, 'method="post" action="https://mbasic.facebook.com/reg/submit/"') !== false) {
-            echo "\033[1;32mSuccess\033[1;37m\n";
-            
+            echo "\033[1;32mTrue\033[1;37m\n";
+            echo $get_proxy_cookies;
             
         } else if($get_proxy_cookies !== false  && strpos($get_proxy_cookies, 'method="post" action="/cookie/consent/') !== false) {
             echo "\033[1;31mProxy Cookies Error\033[1;37m\n";
