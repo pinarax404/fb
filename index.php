@@ -20,14 +20,16 @@ function soot_start() {
 
     if($get_attr !== false && $get_email !== false && strpos($get_email, 'name="mailbox"') !== false) {
         $res_attr   = json_decode($get_attr, true);
-        $first_name = strtolower($json_generate_user['results']['0']['name']['first']);
-        $last_name  = strtolower($json_generate_user['results']['0']['name']['last']);
+        $first_name = strtolower($res_attr['results']['0']['name']['first']);
+        $last_name  = strtolower($res_attr['results']['0']['name']['last']);
         $email      = replace_string('<input type="search" name="mailbox" value="', '"', $get_email);
 
         echo "\033[1;37mFull Name : " . $first_name . ' ' . $last_name . "\n";
         echo "\033[1;37mEmail : " . $email . "\n";
         echo "\033[1;37mCreating Account...\n";
 
+    } else {
+        echo 'looping';
     }
 }
 
