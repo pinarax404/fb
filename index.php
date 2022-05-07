@@ -53,7 +53,7 @@ function replace_string($start, $end, $data) {
     return $rt;
 }
 
-function curl_attr($url, $body, $httpheader, $useragent, $createcookies, $readcookies) {
+function curl_attr($url = null, $body = null, $httpheader = null, $useragent = null, $createcookies = null, $readcookies = null) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     if($body) {
