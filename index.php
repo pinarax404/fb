@@ -74,8 +74,6 @@ function curl_attr($url, $body, $useragent) {
     $respons_header = substr($respons_data, 0, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
     $respons_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
-    
-    return $respons_data;
 
     if($respons_http_code == 200) {
         return $respons_data;
