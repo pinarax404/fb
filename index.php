@@ -67,7 +67,7 @@ function curl_attr($url, $body, $useragent) {
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookiesfb.txt');
+    //curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookiesfb.txt');
     $respons_data = curl_exec($ch);
     $respons_header = substr($respons_data, 0, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
     $respons_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
