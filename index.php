@@ -75,16 +75,10 @@ function curl_attr($url, $body, $useragent, $createcookies, $readcookies) {
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'origin: https://mbasic.facebook.com',
-        'authority: mbasic.facebook.com',
-        'upgrade-insecure-requests: 1',
-        'Host: mbasic.facebook.com',
         'content-type: application/x-www-form-urlencoded',
-        'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'accept-language:ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk;q=0.6',
-        'accept-encoding: deflate, br',
         "Referer: https://mbasic.facebook.com",
         'Connection: keep-alive',
-        'cache-control: max-age=0',
         'user-agent: ' . $useragent
     ));
     if($body) {
