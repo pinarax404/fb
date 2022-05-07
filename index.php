@@ -14,9 +14,9 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
 //********************//
 
 
-    $get_ip     = curl_attr('https://ipwhois.app/json/', false, false, false, false);
-    $get_attr   = curl_attr('https://randomuser.me/api/?gender=female&nat=us', false, false, false, false);
-    $get_email  = curl_attr('http://ese.kr/?pb=6549', false, false, false, false);
+    $get_ip     = curl_attr('https://ipwhois.app/json/', false, false);
+    $get_attr   = curl_attr('https://randomuser.me/api/?gender=female&nat=us', false, false);
+    $get_email  = curl_attr('http://ese.kr/?pb=6549', false, false);
 
     if($get_ip !== false) {
         $res_ip = json_decode($get_ip, true);
@@ -38,7 +38,7 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
         echo "\033[1;37m◆ Creating  : ";
 
         $data_post_create_1 = 'lsd=AVrzaUa2khY&jazoest=21016&ccp=2&reg_instance=Xi92YmDws84GGNBn4Lqqfmdb&submission_request=true&helper=&reg_impression_id=818c417c-2220-427e-91a5-1aad57f1b6c4&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$first_name.'+&lastname='.$first_name.'&reg_email__='.$email.'&sex=1&custom_gender=&did_use_age=false&birthday_month=5&birthday_day=7&birthday_year=2002&age_step_input=&reg_passwd__='.$default_password.'&submit=Sign+Upp';
-        $post_create_1 = curl_attr('https://mbasic.facebook.com/reg/submit/?cid=103', $data_post_create_1, $useragent, false, false);
+        $post_create_1 = curl_attr('https://mbasic.facebook.com/reg/submit/?cid=103', $data_post_create_1, $useragent);
         echo "\n" . $post_create_1;
         
         
@@ -53,21 +53,15 @@ function replace_string($start, $end, $data) {
     return $rt;
 }
 
-function curl_attr($url, $body, $useragent, $createcookies, $readcookies) {
+function curl_attr($url, $body, $useragent) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
-    if($body) {
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-    }
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'content-type: application/x-www-form-urlencoded',
         'user-agent: ' . $useragent
     ));
-    if($createcookies) {
-        curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookiesfb.txt');
-    }
-    if($readcookies) {
-        curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookiesfb.txt');
+    if($body) {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
     }
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
