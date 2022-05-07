@@ -49,15 +49,9 @@ $useragent = "Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) AppleWebKit/
             $reg_instance = replace_string('name="reg_instance" value="', '"', $get_accept_cookies);
             $reg_impression_id = replace_string('name="reg_impression_id" value="', '"', $get_accept_cookies);
 
-            $data_post_fb_1 = 'ccp=2&reg_instance=q_Z2Yn6kTVrvM8ckWt26D3kF&submission_request=true&helper=&reg_impression_id=69a4862f-3b8c-4e5c-983a-db982fb1d630&ns=1&zero_header_af_client=&app_id=103&logger_id=c5395e48-ae2f-4ee0-bccd-92ac82523354&field_names%5B0%5D=firstname&firstname='.$first_name.'&lastname='.$last_name.'&field_names%5B1%5D=birthday_wrapper&birthday_day=7&birthday_month=5&birthday_year=2000&age_step_input=&did_use_age=false&field_names%5B2%5D=reg_email__&reg_email__='.$email.'&field_names%5B3%5D=sex&sex=1&preferred_pronoun=&custom_gender=&field_names%5B4%5D=reg_passwd__&reg_passwd__='.$default_password.'&name_suggest_elig=false&was_shown_name_suggestions=false&did_use_suggested_name=false&use_custom_gender=false&guid=&encpass=&fb_dtsg=AQENq-&jazoest=21372&lsd=AVq3f_vTR5c&__dyn=1Z3paBwk8nxe14z-l0BBBg9odE4a2i5U4e0C86u7E39x64o7S0PEhwem0iy1gCwjE1xolwaS0UE-0nSUS0se229w4NwqU2YxW0D81x82ew4Kwww5NyE1582ZwrU&__csr=&__req=h&__a=AYkbXkydaIHZS8_xP5a8YCP4M2Cvz5taaEQiqef7YWrYfBmzzdzoyuvLccJ4Gdj1opnE15rmLKsZt5F3z1RY6tdN-_2QIm4FuzcYS5X92u5Zmg&__user=0';
-            $post_fb_1 = curl_attr('https://mbasic.facebook.com/reg/submit/', $data_post_fb_1, $useragent, true, false);
-            if($post_fb_1) {
-                $get_fb_check = curl_attr('https://m.facebook.com/login/save-device', false, $useragent, false, true);
-                echo $get_fb_check;
-            } else {
-                echo "\033[1;31mFailed...\033[1;37m\n";
-                soot_start();
-            }
+            $data_post_fb_1 = 'lsd=AVq5KPgQd9I&jazoest=2886&ccp=2&reg_instance='.$reg_instance.'&submission_request=true&helper=&reg_impression_id='.$reg_impression_id.'&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$email.'&sex=1&custom_gender=&did_use_age=false&birthday_month=5&birthday_day=7&birthday_year=2002&age_step_input=&reg_passwd__='.$default_password.'&submit=Sign+Up';
+            $post_fb_1 = curl_attr('https://mbasic.facebook.com/reg/submit/?cid=103', $data_post_fb_1, $useragent, false, false);
+            echo $post_fb_1;
         } else if($get_accept_cookies !== false && strpos($get_accept_cookies, 'method="post" action="/cookie/consent/') !== false) {
             echo "\033[1;31mProxy Cookies Error\033[1;37m\n";
             soot_start();
