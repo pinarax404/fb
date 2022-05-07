@@ -80,6 +80,8 @@ function curl_attr($url, $body, $useragent, $createcookies, $readcookies) {
     curl_close($ch);
     
     return $respons_data;
+    
+    echo "\n" . $body;
 
     //if($respons_http_code == 200) {
     //    return $respons_data;
