@@ -18,9 +18,11 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
     $get_ip     = curl_attr('https://ipwhois.app/json/', false, false, false, false);
     if($get_ip !== false) {
         $res_ip = json_decode($get_ip, true);
+        echo "\033[1;37m========================================\033[1;37m\n";
         echo "\033[1;37mIP : " . $res_ip['ip'] . " | Country : " . $res_ip['country'] . "\033[1;37m\n";
         echo "\033[1;37m========================================\033[1;37m\n";
     } else {
+        echo "\033[1;37m========================================\033[1;37m\n";
         echo "\033[1;37mIP : null | Country : null\033[1;37m\n";
         echo "\033[1;37m========================================\033[1;37m\n";
     }
