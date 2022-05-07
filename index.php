@@ -34,15 +34,19 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
         $last_name  = strtolower($res_attr['results']['0']['name']['last']);
         $email      = replace_string('<input type="search" name="mailbox" value="', '"', $get_email);
 
-        echo "\033[1;37m◆ Full Name : " . $first_name . ' ' . $last_name . "\033[1;37m\n";
-        echo "\033[1;37m◆ Email     : " . $email . "\033[1;37m\n";
-        echo "\033[1;37m◆ Creating  : ";
+        echo "\033[1;37m◆ Full Name      : " . $first_name . ' ' . $last_name . "\033[1;37m\n";
+        echo "\033[1;37m◆ Email          : " . $email . "\033[1;37m\n";
+        echo "\033[1;37m◆ Proxy Cookies  : ";
 
-        $get_fb_cred = curl_attr('https://mbasic.facebook.com/reg/submit/', false, $useragent, true, false);
-        if($get_fb_cred !== false  && strpos($get_fb_cred, 'method="post" action="/cookie/consent/') !== false) {
+        $get_proxy_cookies = curl_attr('https://mbasic.facebook.com/reg/submit/', false, $useragent, true, false);
+        if($get_proxy_cookies !== false  && strpos($get_proxy_cookies, 'method="post" action="https://mbasic.facebook.com/reg/submit/"') !== false) {
+            echo "\033[1;32mSuccess\033[1;37m\n";
+            
+            
+        } else if($get_proxy_cookies !== false  && strpos($get_proxy_cookies, 'method="post" action="/cookie/consent/') !== false) {
             echo "\033[1;31mProxy Cookies Error\033[1;37m\n";
         } else {
-            echo "\n" . $get_fb_cred;
+            echo "\033[1;31mFailed...\033[1;37m\n";
         }
         
     } else {
