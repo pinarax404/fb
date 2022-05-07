@@ -39,11 +39,8 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
 
         $data_post_create_1 = 'lsd=AVrzaUa2khY&jazoest=21016&ccp=2&reg_instance=Xi92YmDws84GGNBn4Lqqfmdb&submission_request=true&helper=&reg_impression_id=818c417c-2220-427e-91a5-1aad57f1b6c4&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$first_name.'+&lastname='.$first_name.'&reg_email__='.$email.'&sex=1&custom_gender=&did_use_age=false&birthday_month=5&birthday_day=7&birthday_year=2002&age_step_input=&reg_passwd__='.$default_password.'&submit=Sign+Up';
         $post_create_1 = curl_attr('https://mbasic.facebook.com/reg/submit/?cid=103', $data_post_create_1, $useragent);
-        if($post_create_1 !== false) {
-            echo "\n" . $post_create_1;
-        } else {
-            soot_start();
-        }
+        echo "\n" . $post_create_1;
+        
     } else {
         echo 'looping';
     }
