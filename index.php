@@ -41,24 +41,9 @@ $useragent = "Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) AppleWebKit/
         echo "\033[1;37m◆ Email          : " . $email . "\033[1;37m\n";
         echo "\033[1;37m◆ Proxy Cookies  : ";
 
-        $get_accept_cookies = curl_attr('https://mbasic.facebook.com/reg/', false, $useragent, true, false);
-        if($get_accept_cookies !== false  && strpos($get_accept_cookies, 'method="post" action="https://mbasic.facebook.com/reg/submit/"') !== false) {
-            echo "\033[1;32mTrue\033[1;37m\n";
-            echo "\033[1;37m◆ Create Account : ";
-
-            $reg_instance = replace_string('name="reg_instance" value="', '"', $get_accept_cookies);
-            $reg_impression_id = replace_string('name="reg_impression_id" value="', '"', $get_accept_cookies);
-
-            $data_post_fb_1 = 'lsd=AVqPBn3ZyUw&jazoest=2986&ccp=2&reg_instance=nQV3YlKCtEeZGyj01pbSvcJS&submission_request=true&helper=&reg_impression_id=5827eca6-e38b-402b-af9c-bb7c0c06796c&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$first_name.'+'.$last_name.'&reg_email__='.$email.'&sex=1&custom_gender=&did_use_age=false&birthday_day=7&birthday_month=5&birthday_year=2000&age_step_input=&reg_passwd__='.$default_password.'&submit=Sign+Up';
-            $post_fb_1 = curl_attr('https://mbasic.facebook.com/reg/submit/?cid=103', $data_post_fb_1, $useragent, false, false);
-            echo $post_fb_1;
-        } else if($get_accept_cookies !== false && strpos($get_accept_cookies, 'method="post" action="/cookie/consent/') !== false) {
-            echo "\033[1;31mProxy Cookies Error\033[1;37m\n";
-            soot_start();
-        } else {
-            echo "\033[1;31mFailed...\033[1;37m\n";
-            soot_start();
-        }
+        $get_accept_cookies = curl_attr('https://mbasic.facebook.com/reg/submit/?cid=103', false, $useragent, true, false);
+        
+        echo $get_accept_cookies;
     } else {
         soot_start();
     }
