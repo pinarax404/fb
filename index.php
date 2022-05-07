@@ -38,11 +38,13 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
         echo "\033[1;37m◆ Email          : " . $email . "\033[1;37m\n";
         echo "\033[1;37m◆ Proxy Cookies  : ";
 
-        $get_proxy_cookies = curl_attr('https://mbasic.facebook.com/reg/submit/', false, $useragent, true, false);
-        if($get_proxy_cookies !== false  && strpos($get_proxy_cookies, 'method="post" action="https://mbasic.facebook.com/reg/submit/"') !== false) {
+        $get_accept_cookies = curl_attr('https://mbasic.facebook.com/reg/submit/', false, $useragent, true, false);
+        if($get_accept_cookies !== false  && strpos($get_accept_cookies, 'method="post" action="https://mbasic.facebook.com/reg/submit/"') !== false) {
             echo "\033[1;32mTrue\033[1;37m\n";
-            echo $get_proxy_cookies;
-            
+            $reg_instance = replace_string('name="reg_instance" value="', '"', $get_accept_cookies);
+            $reg_impression_id = replace_string('name="reg_impression_id" value="', '"', $get_accept_cookies);
+            echo $reg_instance . "\n";
+            echo $reg_impression_id . "\n";
         } else if($get_proxy_cookies !== false  && strpos($get_proxy_cookies, 'method="post" action="/cookie/consent/') !== false) {
             echo "\033[1;31mProxy Cookies Error\033[1;37m\n";
         } else {
