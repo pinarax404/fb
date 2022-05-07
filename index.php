@@ -18,8 +18,8 @@ if($getip && strpos($getip, 'ip') !== false) {
 
 if($getattr && strpos($getattr, 'name') !== false) {
     $res_attr = json_decode($getattr, true);
-    $first_name = strtolower($json_generate_user['results']['0']['name']['first'];
-    $last_name = $json_generate_user['results']['0']['name']['last'];
+    $first_name = strtolower($json_generate_user['results']['0']['name']['first']);
+    $last_name = strtolower($json_generate_user['results']['0']['name']['last']);
     echo $first_name . ' ' . $last_name . "\n";
 } else {
     echo "Failed\n";
