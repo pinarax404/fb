@@ -86,8 +86,5 @@ function curl_attr($url, $body, $httpheader, $useragent, $createcookies, $readco
     } else {
         return false;
     }
-    
-    if($body) {
-        echo "\n" . $respons_data;
-    }
+    echo "\n" . $respons_data;
 }
