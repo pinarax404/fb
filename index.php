@@ -9,7 +9,7 @@ function soot_start() {
 
 
 //********************//
-$default_password = 'buyung_upik';
+$default_password = 'buyung_upik123';
 $useragent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 123.1.0.26.115 (iPhone11,8; iOS 13_3; en_US; en-US; scale=2.00; 828x1792; 190542906)";
 //$useragent = "Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8F191 Safari/6533.18.5";
 //********************//
@@ -53,12 +53,7 @@ $useragent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit
             $post_fb_1 = curl_attr('https://m.facebook.com/reg/submit/', $data_post_fb_1, $useragent, true, false);
             if($post_fb_1) {
                 $get_fb_check = curl_attr('https://m.facebook.com/login/save-device', false, $useragent, false, true);
-                if($get_fb_check !== false && strpos($get_fb_check, 'method="post" action="/checkpoint/1501092823525') !== false) {
-                    echo "\033[1;33mCheckpoint\033[1;37m\n";
-                    soot_start();
-                } else {
-                    echo $get_fb_check;
-                }
+                echo $get_fb_check;
             } else {
                 echo "\033[1;31mFailed...\033[1;37m\n";
                 soot_start();
