@@ -60,7 +60,7 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
                 echo "\033[1;32mCreate Success\033[1;37m\n";
                 echo $post_fb_1;
             }
-        } else if($get_proxy_cookies !== false && strpos($get_proxy_cookies, 'method="post" action="/cookie/consent/') !== false) {
+        } else if($get_accept_cookies !== false && strpos($get_accept_cookies, 'method="post" action="/cookie/consent/') !== false) {
             echo "\033[1;31mProxy Cookies Error\033[1;37m\n";
             soot_start();
         } else {
