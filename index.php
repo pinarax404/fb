@@ -51,6 +51,7 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
             $post_fb_1 = curl_attr('https://mbasic.facebook.com/reg/submit/', $data_post_fb_1, $useragent, false, true);
             if($post_fb_1 !== false && strpos($post_fb_1, 'method="post" action="/checkpoint/') !== false) {
                 echo "\033[1;31mCheckpoint\033[1;37m\n";
+                soot_start();
             } else if($post_fb_1 !== false && strpos($post_fb_1, 'svsvsvsv') !== false) {
                 
             } else {
@@ -59,12 +60,13 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
             }
         } else if($get_proxy_cookies !== false && strpos($get_proxy_cookies, 'method="post" action="/cookie/consent/') !== false) {
             echo "\033[1;31mProxy Cookies Error\033[1;37m\n";
+            soot_start();
         } else {
             echo "\033[1;31mFailed...\033[1;37m\n";
+            soot_start();
         }
-        
     } else {
-        echo 'looping';
+        soot_start();
     }
 }
 
