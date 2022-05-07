@@ -13,9 +13,13 @@ function soot_start() {
 
     if($get_ip !== false) {
         $res_ip = json_decode($get_ip, true);
+        echo "\033[1;37--------------------------------------\033[1;37m\n";
         echo "\033[1;37mIP : " . $res_ip['ip'] . " | Country : " . $res_ip['country'] . "\033[1;37m\n";
+        echo "\033[1;37--------------------------------------\033[1;37m\n";
     } else {
+        echo "\033[1;37--------------------------------------\033[1;37m\n";
         echo "\033[1;37mIP : null | Country : null\033[1;37m\n";
+        echo "\033[1;37--------------------------------------\033[1;37m\n";
     }
 
     if($get_attr !== false && $get_email !== false && strpos($get_email, 'name="mailbox"') !== false) {
@@ -24,9 +28,9 @@ function soot_start() {
         $last_name  = strtolower($res_attr['results']['0']['name']['last']);
         $email      = replace_string('<input type="search" name="mailbox" value="', '"', $get_email);
 
-        echo "\033[1;37mFull Name : " . $first_name . ' ' . $last_name . "\n";
-        echo "\033[1;37mEmail : " . $email . "\n";
-        echo "\033[1;37mCreating Account...\n";
+        echo "\033[1;37mFull Name : " . $first_name . ' ' . $last_name . "\033[1;37m\n";
+        echo "\033[1;37mEmail : " . $email . "\033[1;37m\n";
+        echo "\033[1;37mCreating Account...\033[1;37m\n";
 
     } else {
         echo 'looping';
