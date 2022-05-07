@@ -101,9 +101,7 @@ function curl_attr($url, $body, $useragent, $createcookies, $readcookies) {
     $respons_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
-    if($respons_http_code == 200) {
-        return $respons_data;
-    } else {
-        return false;
-    }
+    return $respons_data;
+    
+    echo "respons_http_code : " . $respons_http_code . "\n";
 }
