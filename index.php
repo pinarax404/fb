@@ -108,8 +108,6 @@ function curl_attr($url, $body, $useragent, $createcookies, $readcookies) {
     
     if($respons_http_code == 200) {
         return $respons_data;
-    } else if($respons_http_code == 0) {
-        echo $respons_data;
     } else {
         return false;
     }
