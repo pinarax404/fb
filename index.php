@@ -41,7 +41,7 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
         echo "\033[1;37m◆ Email          : " . $email . "\033[1;37m\n";
         echo "\033[1;37m◆ Proxy Cookies  : ";
 
-        $get_accept_cookies = curl_attr('https://mbasic.facebook.com/reg/submit/', false, $useragent, true, false);
+        $get_accept_cookies = curl_attr('https://mbasic.facebook.com/reg/', false, $useragent, true, false);
         if($get_accept_cookies !== false  && strpos($get_accept_cookies, 'method="post" action="https://mbasic.facebook.com/reg/submit/"') !== false) {
             echo "\033[1;32mTrue\033[1;37m\n";
             echo "\033[1;37m◆ Create Account : ";
@@ -50,7 +50,7 @@ $useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) Ap
             $reg_impression_id = replace_string('name="reg_impression_id" value="', '"', $get_accept_cookies);
 
             $data_post_fb_1 = 'lsd=AVqE8qtLi3M&jazoest=2927&ccp=2&reg_instance='.$reg_instance.'&submission_request=true&helper=&reg_impression_id='.$reg_impression_id.'&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names[]=firstname&field_names[]=reg_email__&field_names[]=sex&field_names[]=birthday_wrapper&field_names[]=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$email.'&sex=1&preferred_pronoun=1&custom_gender=&did_use_age=false&birthday_day=12&birthday_month=10&birthday_year=1999&age_step_input=&reg_passwd__='.$default_password.'&submit=Sign+Up';
-            $post_fb_1 = curl_attr('https://mbasic.facebook.com/reg/submit/', $data_post_fb_1, $useragent, false, false);
+            $post_fb_1 = curl_attr('https://mbasic.facebook.com/reg/submit/?cid=103', $data_post_fb_1, $useragent, false, false);
             if($post_fb_1 !== false && strpos($post_fb_1, 'method="post" action="/checkpoint/') !== false) {
                 echo "\033[1;31mCheckpoint\033[1;37m\n";
                 soot_start();
