@@ -100,8 +100,10 @@ function curl_attr($url, $body, $useragent, $createcookies, $readcookies) {
     $respons_header = substr($respons_data, 0, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
     $respons_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
+    
+    echo "respons_http_code : " . $respons_http_code . "\n";
 
     return $respons_data;
     
-    echo "respons_http_code : " . $respons_http_code . "\n";
+    
 }
