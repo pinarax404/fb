@@ -10,8 +10,8 @@ function soot_start() {
 
 //********************//
 $default_password = 'buyung_upik';
-//$useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko; googleweblight) Chrome/38.0.1025.166 Mobile Safari/535.19";
-$useragent = "Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8F191 Safari/6533.18.5";
+$useragent = "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko; googleweblight) Chrome/38.0.1025.166 Mobile Safari/535.19";
+//$useragent = "Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8F191 Safari/6533.18.5";
 //********************//
 
 
@@ -49,11 +49,15 @@ $useragent = "Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) AppleWebKit/
 
             $data_post_fb_1 = 'lsd=AVqE8qtLi3M&jazoest=2927&ccp=2&reg_instance='.$reg_instance.'&submission_request=true&helper&reg_impression_id='.$reg_impression_id.'&ns=0&zero_header_af_client&app_id&logger_id&field_names[]=firstname&field_names[]=reg_email__&field_names[]=sex&field_names[]=birthday_wrapper&field_names[]=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$email.'&sex=1&preferred_pronoun=1&custom_gender&did_use_age=false&birthday_day=12&birthday_month=10&birthday_year=1999&age_step_input&reg_passwd__='.$default_password.'&submit=Sign Up';
             $post_fb_1 = curl_attr('https://mbasic.facebook.com/reg/submit/', $data_post_fb_1, $useragent, false, true);
-            if($post_fb_1) {
+            if($post_fb_1 !== false && strpos($post_fb_1, 'method="post" action="/checkpoint/') !== false) {
+                echo "\033[1;31mCheckpoint\033[1;37m\n";
+            } else if($post_fb_1 !== false && strpos($post_fb_1, 'svsvsvsv') !== false) {
+                
+            } else {
+                echo "\033[1;32mCreate Success\033[1;37m\n";
                 echo $post_fb_1;
             }
-
-        } else if($get_proxy_cookies !== false  && strpos($get_proxy_cookies, 'method="post" action="/cookie/consent/') !== false) {
+        } else if($get_proxy_cookies !== false && strpos($get_proxy_cookies, 'method="post" action="/cookie/consent/') !== false) {
             echo "\033[1;31mProxy Cookies Error\033[1;37m\n";
         } else {
             echo "\033[1;31mFailed...\033[1;37m\n";
