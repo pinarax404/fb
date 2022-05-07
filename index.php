@@ -27,7 +27,7 @@ function soot_start() {
         $email      = replace_string('<input type="search" name="mailbox" value="', '"', $get_email);
 
         echo "\033[1;37mFull Name : " . $first_name . ' ' . $last_name . "\033[1;37m\n";
-        echo "\033[1;37mEmail : " . $email . "\033[1;37m\n";
+        echo "\033[1;37mEmail     : " . $email . "\033[1;37m\n";
         echo "\033[1;37mCreating Account...\033[1;37m\n";
 
     } else {
