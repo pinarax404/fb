@@ -10,8 +10,8 @@ function soot_start() {
 
 //********************//
 $default_password = 'buyung_upik123';
-$useragent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 123.1.0.26.115 (iPhone11,8; iOS 13_3; en_US; en-US; scale=2.00; 828x1792; 190542906)";
-//$useragent = "Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8F191 Safari/6533.18.5";
+//$useragent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 123.1.0.26.115 (iPhone11,8; iOS 13_3; en_US; en-US; scale=2.00; 828x1792; 190542906)";
+$useragent = "Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8F191 Safari/6533.18.5";
 //********************//
 
 
@@ -50,7 +50,7 @@ $useragent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit
             $reg_impression_id = replace_string('name="reg_impression_id" value="', '"', $get_accept_cookies);
 
             $data_post_fb_1 = 'ccp=2&reg_instance=q_Z2Yn6kTVrvM8ckWt26D3kF&submission_request=true&helper=&reg_impression_id=69a4862f-3b8c-4e5c-983a-db982fb1d630&ns=1&zero_header_af_client=&app_id=103&logger_id=c5395e48-ae2f-4ee0-bccd-92ac82523354&field_names%5B0%5D=firstname&firstname='.$first_name.'&lastname='.$last_name.'&field_names%5B1%5D=birthday_wrapper&birthday_day=7&birthday_month=5&birthday_year=2000&age_step_input=&did_use_age=false&field_names%5B2%5D=reg_email__&reg_email__='.$email.'&field_names%5B3%5D=sex&sex=1&preferred_pronoun=&custom_gender=&field_names%5B4%5D=reg_passwd__&reg_passwd__='.$default_password.'&name_suggest_elig=false&was_shown_name_suggestions=false&did_use_suggested_name=false&use_custom_gender=false&guid=&encpass=&fb_dtsg=AQENq-&jazoest=21372&lsd=AVq3f_vTR5c&__dyn=1Z3paBwk8nxe14z-l0BBBg9odE4a2i5U4e0C86u7E39x64o7S0PEhwem0iy1gCwjE1xolwaS0UE-0nSUS0se229w4NwqU2YxW0D81x82ew4Kwww5NyE1582ZwrU&__csr=&__req=h&__a=AYkbXkydaIHZS8_xP5a8YCP4M2Cvz5taaEQiqef7YWrYfBmzzdzoyuvLccJ4Gdj1opnE15rmLKsZt5F3z1RY6tdN-_2QIm4FuzcYS5X92u5Zmg&__user=0';
-            $post_fb_1 = curl_attr('https://m.facebook.com/reg/submit/', $data_post_fb_1, $useragent, true, false);
+            $post_fb_1 = curl_attr('https://mbasic.facebook.com/reg/submit/', $data_post_fb_1, $useragent, true, false);
             if($post_fb_1) {
                 $get_fb_check = curl_attr('https://m.facebook.com/login/save-device', false, $useragent, false, true);
                 echo $get_fb_check;
