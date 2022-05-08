@@ -62,7 +62,7 @@ class create:
         self._password = data['password']
         logging.info('name: %s', data['firstname'] + ' ' + data['lastname'])
         logging.info('create a facebook account')
-        self.br.open('https://mobile.facebook.com/reg/?cid=103&refsrc=deprecated&soft=hjk')
+        self.br.open('https://mbasic.facebook.com/reg/?cid=103&refsrc=deprecated&soft=hjk')
 
         self.br.select_form(nr=0)
         self.br.form['firstname'] = data['firstname'] + ' ' + data['lastname']
