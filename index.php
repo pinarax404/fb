@@ -49,7 +49,7 @@ $useragent = "Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) AppleWebKit/
             $reg_instance = replace_string('name="reg_instance" value="', '"', $get_accept_cookies);
             $reg_impression_id = replace_string('name="reg_impression_id" value="', '"', $get_accept_cookies);
 
-            $data_post_fb_1 = 'lsd=AVpJP2d9jTM&jazoest=2891&ccp=2&reg_instance=4wd3Yk7MaQnfKf9NMX-LyXCQ&helper=&reg_impression_id=41104560-8378-4371-8d16-240c495d5bc7&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names[]=firstname&field_names[]=reg_email__&field_names[]=sex&field_names[]=birthday_wrapper&field_names[]=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$email.'&name=1&custom_gender=&did_use_age=false&birthday_day=11&birthday_month=10&birthday_year=2000&age_step_input=&reg_passwd__=badaklepas';
+            $data_post_fb_1 = 'lsd=AVpJP2d9jTM&jazoest=2891&ccp=2&reg_instance=4wd3Yk7MaQnfKf9NMX-LyXCQ&helper=&reg_impression_id=41104560-8378-4371-8d16-240c495d5bc7&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names[]=firstname&field_names[]=reg_email__&field_names[]=sex&field_names[]=birthday_wrapper&field_names[]=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$email.'&name=1&custom_gender=&did_use_age=false&birthday_day=11&birthday_month=10&birthday_year=2000&age_step_input=&reg_passwd__=badaklepas&submit';
             $post_fb_1 = curl_attr('https://mbasic.facebook.com/reg/submit/?cid=103', $data_post_fb_1, $useragent, false, false);
             echo $post_fb_1;
         } else if($get_accept_cookies !== false && strpos($get_accept_cookies, 'method="post" action="/cookie/consent/') !== false) {
