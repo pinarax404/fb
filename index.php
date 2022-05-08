@@ -78,7 +78,7 @@ function curl_attr($url) {
     }
 }
 
-function curl_attr_fb($url, $body, $createcookies == false, $readcookies == false) {
+function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
