@@ -41,7 +41,7 @@ $default_password = 'buyung_upik123';
         echo "\033[1;37m◆ Email          : " . $email . "\033[1;37m\n";
         echo "\033[1;37m◆ Proxy Cookies  : ";
 
-        $data_post_fb_1 = 'lsd=AVoZo3SNttY&jazoest=2996&ccp=2&reg_instance=mzh4YhfVOU_J-SyrZdauqlD5&submission_request=true&helper=&reg_impression_id=0d0d66d8-fd3c-4cce-a13f-8eef68903904&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname=Anna&lastname=Zaza&reg_email__=6281547589652&sex=1&custom_gender=&did_use_age=false&birthday_month=2&birthday_day=18&birthday_year=1998&age_step_input=&reg_passwd__=badaklepas&submit=Sign+Up';
+        $data_post_fb_1 = 'lsd=AVoZo3SNttY&jazoest=2996&ccp=2&reg_instance=mzh4YhfVOU_J-SyrZdauqlD5&submission_request=true&helper=&reg_impression_id=0d0d66d8-fd3c-4cce-a13f-8eef68903904&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$first_name.'&lastname=Zaza&reg_email__='.$email.'&sex=1&custom_gender=&did_use_age=false&birthday_month=2&birthday_day=18&birthday_year=1998&age_step_input=&reg_passwd__=badaklepas&submit=Sign+Up';
         $post_fb_1 = curl_attr_fb('https://mbasic.facebook.com/reg/submit/', $data_post_fb_1, false, false);
         echo $post_fb_1;
         //if($post_fb_1) {
@@ -85,7 +85,7 @@ function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false)
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'content-type: application/x-www-form-urlencoded',
-        'user-agent: Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8F191 Safari/6533.18.5'
+        'user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Mobile/15E148 Safari/604.1'
     ));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
