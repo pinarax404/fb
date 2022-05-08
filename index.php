@@ -43,10 +43,11 @@ $default_password = 'buyung_upik123';
 
         $data_post_fb_1 = 'ccp=2&reg_instance=NS14YoljZedGu7FmVH5Cy5rW&submission_request=true&helper=&reg_impression_id=82dc3df3-0de5-4f7d-a3fb-70c2c34d67e6&ns=2&zero_header_af_client=&app_id=103&logger_id=430eb3ca-7a0e-4873-b608-1409f6ae4882&field_names%5B0%5D=firstname&firstname='.$first_name.'&lastname='.$last_name.'&field_names%5B1%5D=birthday_wrapper&birthday_month=5&birthday_day=8&birthday_year=1982&age_step_input=&did_use_age=&field_names%5B2%5D=reg_email__&reg_email__='.$email.'&field_names%5B3%5D=sex&sex=1&preferred_pronoun=&custom_gender=&field_names%5B4%5D=reg_passwd__&reg_passwd__='.$default_password.'&name_suggest_elig=false&was_shown_name_suggestions=false&did_use_suggested_name=false&use_custom_gender=false&guid=&encpass=&submit=Sign%20Up&fb_dtsg=&jazoest=21428&lsd=AVoxt-kPbE8&__dyn=1Z3paBwk8nxe14z-l0BBBg9odE4a2i5U4e0C86u7E39x64o7S0PEhwem0iy1gCwjE1xolwaS0UE-0nSUS0se229w4NwqU2YxW0D81x82ew4Kwww5NyE1582ZwrU&__csr=&__req=k&__a=AYmnMJxoYZ2Cx3r6CmyPTHRPpdYt737LIl9gdfovEAfMjNsxwGfR1AxVfH2C8DlCzZIhR8wL_QVadEjGAUvreW2M4UuZ393q_Fa9T1xKNQXC2g&__user=0';
         $post_fb_1 = curl_attr_fb('https://x.facebook.com/reg/submit/', $data_post_fb_1, true, false);
-        if($post_fb_1) {
-            $get_fb_2 = curl_attr_fb('https://m.facebook.com/login/save-device/', false, false, true);
-            echo $get_fb_2;
-        }
+        echo $post_fb_1;
+        //if($post_fb_1) {
+        //    $get_fb_2 = curl_attr_fb('https://m.facebook.com/login/save-device/', false, false, true);
+        //    echo $get_fb_2;
+        //}
     } else {
         soot_start();
     }
