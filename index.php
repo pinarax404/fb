@@ -74,7 +74,7 @@ function curl_attr($url, $body, $useragent, $createcookies, $readcookies) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'content-type: application/x-www-form-urlencoded',
+        'content-type: application/json',
         'user-agent: ' . $useragent
     ));
     if($body) {
