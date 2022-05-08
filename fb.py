@@ -36,7 +36,7 @@ class create:
             mechanize._http.HTTPRefreshProcessor(),
             max_time = 5
         )
-        br.addheaders = [('User-agent', "SAMSUNG-GT-S3850/1.0 SHP/VPP/R5 Dolfin/2.0 NexPlayer/3.0 SMM-MMS/1.2.0 profile/MIDP-2.1 configuratio")]
+        br.addheaders = [('User-agent', "Mozilla/5.0 (Linux; Android 11) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36")]
 
         return br
 
