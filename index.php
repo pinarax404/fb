@@ -42,7 +42,7 @@ $useragent = "Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) AppleWebKit/
         echo "\033[1;37m◆ Proxy Cookies  : ";
 
         $get_accept_cookies = curl_attr('https://mbasic.facebook.com/reg/submit/?cid=103', false, $useragent, true, false);
-        if($get_accept_cookies !== false  && strpos($get_accept_cookies, 'method="post" action="https://mbasic.facebook.com/reg/submit/"') !== false) {
+        if($get_accept_cookies !== false  && strpos($get_accept_cookies, 'method="post" action="https://mbasic.facebook.com/reg/submit/') !== false) {
             echo "\033[1;32mTrue\033[1;37m\n";
             echo "\033[1;37m◆ Create Account : ";
 
