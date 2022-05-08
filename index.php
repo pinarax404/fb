@@ -42,7 +42,7 @@ $default_password = 'buyung_upik123';
         echo "\033[1;37m◆ Proxy Cookies  : ";
 
         $data_post_fb_1 = 'lsd=AVpqsb4WHVI&jazoest=2959&ccp=2&reg_instance=xwZ3Yi8eM0KHjXgi42cihT1F&submission_request=true&helper=&reg_impression_id=3473e92d-b977-49e1-b1b5-34d814c3f409&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$first_name.'+zaza&reg_email__='.$email.'&sex=1&custom_gender=&did_use_age=false&birthday_day=7&birthday_month=5&birthday_year=1996&age_step_input=&reg_passwd__=badaklepas123&submit=Sign+Up';
-        $post_fb_1 = curl_attr_fb('https://mbasic.facebook.com/reg/submit/?cid=103', $data_post_fb_1);
+        $post_fb_1 = curl_attr_fb('https://m.facebook.com/reg/submit/?cid=103', $data_post_fb_1);
         echo $post_fb_1;
     } else {
         soot_start();
