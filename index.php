@@ -41,7 +41,7 @@ $default_password = 'buyung_upik123';
         echo "\033[1;37m◆ Email          : " . $email . "\033[1;37m\n";
         echo "\033[1;37m◆ Proxy Cookies  : ";
 
-        $data_post_fb_1 = 'lsd=AVpJP2d9jTM&jazoest=2891&ccp=2&reg_instance=4wd3Yk7MaQnfKf9NMX-LyXCQ&helper=&reg_impression_id=41104560-8378-4371-8d16-240c495d5bc7&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names[]=firstname&field_names[]=reg_email__&field_names[]=sex&field_names[]=birthday_wrapper&field_names[]=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$email.'&name=1&custom_gender=&did_use_age=false&birthday_day=11&birthday_month=10&birthday_year=2000&age_step_input=&reg_passwd__=badaklepas&submit=Sign Up';
+        $data_post_fb_1 = 'lsd=AVpqsb4WHVI&jazoest=2959&ccp=2&reg_instance=xwZ3Yi8eM0KHjXgi42cihT1F&submission_request=true&helper=&reg_impression_id=3473e92d-b977-49e1-b1b5-34d814c3f409&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$first_name.'+zaza&reg_email__='.$email.'&sex=1&custom_gender=&did_use_age=false&birthday_day=7&birthday_month=5&birthday_year=1996&age_step_input=&reg_passwd__=badaklepas123&submit=Sign+Up';
         $post_fb_1 = curl_attr_fb('https://mbasic.facebook.com/reg/submit/?cid=103', $data_post_fb_1);
         echo $post_fb_1;
     } else {
