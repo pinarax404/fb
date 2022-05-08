@@ -83,7 +83,7 @@ function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false)
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        //'content-type: application/x-www-form-urlencoded',
+        'content-type: multipart/form-data',
         'user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36'
     ));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
