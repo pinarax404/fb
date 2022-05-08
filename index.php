@@ -42,7 +42,7 @@ $default_password = 'buyung_upik123';
         echo "\033[1;37m◆ Proxy Cookies  : ";
 
         $data_post_fb_1 = 'jazoest=21010&lsd=AVoW_mG8urc&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$email.'&reg_email_confirmation__='.$email.'&reg_passwd__='.$default_password.'&birthday_month=6&birthday_day=17&birthday_year=2000&birthday_age=&did_use_age=false&sex=1&preferred_pronoun=&custom_gender=&referrer=&asked_to_login=0&use_custom_gender=&terms=on&ns=0&ri=a59d0918-5686-4317-8693-a5e04d86fbb2&action_dialog_shown=&ignore=captcha&locale=en_US&reg_instance=FDZ4Yt2F5Ox40hlUyTPjr2hy&captcha_persist_data=AZnX6XWahCqfrjQVDoaEWbXu-a5vO6sh3EaHnm3r9zYrBbYvDdRaExNahkUKfkzCnInxgtuqliBDB_IEu60k3eTObDaZ8T4bEMlUs8VuwfitoAdyDRSIzyaSIoo-0QWwkE6HWgoZKwE-ZIDcGIiCWpIz8MBEI1K-m3iWurdxIG0JmaEbqZIGjiFUxPh_Sf8DSA85HnhDFXF1G99W_y4sdJ5IRiw6Y437E84s5jAkYHoLUVWHVcEc6EE6TcY7tbLWgDSXX3agAr1JkGBdhkN49ttQuLblX_rngfKuK3wRVvSdFnApi0uK0C6GlgQGfege8m5uAyMXnkjHXYlR6aavgySmaqB8TBgrqpECrX93DVTyWjfCft0oscR78oUPR0mlUAc&captcha_response=&__user=0&__a=1&__dyn=7xe6FomK36Q5E5ObwKBWo5O12wAxu13wqovzEdEc8uw9-3K4o1j8hwem0nCq1ewcG0KEswaq0yE5ufz81sbzo5-0me2218w5uwbO7E2swdq0Ho2ewnE3fw5rwSyE1582ZwrU&__csr=&__req=e&__hs=19120.BP%3ADEFAULT.2.0.0.0.&dpr=1&__ccg=EXCELLENT&__rev=1005474943&__s=zcwah1%3Asbumph%3Awvnqbj&__hsi=7095480681922732001-0&__comet_req=0&__spin_r=1005474943&__spin_b=trunk&__spin_t=1652045334';
-        $post_fb_1 = curl_attr_fb('https://www.facebook.com/ajax/register.php', $data_post_fb_1, true, false);
+        $post_fb_1 = curl_attr_fb('https://m.facebook.com/ajax/register.php', $data_post_fb_1, true, false);
         echo $post_fb_1;
         //if($post_fb_1) {
         //    $get_fb_2 = curl_attr_fb('https://m.facebook.com/login/save-device/', false, false, true);
