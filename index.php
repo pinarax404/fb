@@ -74,11 +74,7 @@ function curl_attr($url, $body, $useragent, $createcookies, $readcookies) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'origin: https://mbasic.facebook.com',
         'content-type: application/x-www-form-urlencoded',
-        'accept-language:ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk;q=0.6',
-        "Referer: https://mbasic.facebook.com",
-        'Connection: keep-alive',
         'user-agent: ' . $useragent
     ));
     if($body) {
