@@ -41,13 +41,58 @@ $default_password = 'buyung_upik123';
         echo "\033[1;37m◆ Email          : " . $email . "\033[1;37m\n";
         echo "\033[1;37m◆ Proxy Cookies  : ";
 
-        $data_post_fb_1 = 'lsd=&jazoest=&ccp=2&reg_instance=&submission_request=true&helper=&reg_impression_id=&ns=5&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$email.'&sex=1&custom_gender=&did_use_age=false&birthday_month=2&birthday_day=18&birthday_year=1998&age_step_input=&reg_passwd__=badaklepas123&submit=Sign+Up';
-        $post_fb_1 = curl_attr_fb('https://mbasic.facebook.com/reg/submit/', $data_post_fb_1, true, false);
-        echo $post_fb_1;
+        //$data_post_fb_1 = 'lsd=&jazoest=&ccp=2&reg_instance=&submission_request=true&helper=&reg_impression_id=&ns=5&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$email.'&sex=1&custom_gender=&did_use_age=false&birthday_month=2&birthday_day=18&birthday_year=1998&age_step_input=&reg_passwd__=badaklepas123&submit=Sign+Up';
+        //$post_fb_1 = curl_attr_fb('https://mbasic.facebook.com/reg/submit/', $data_post_fb_1, true, false);
+        //echo $post_fb_1;
         //if($post_fb_1) {
         //    $get_fb_2 = curl_attr_fb('https://m.facebook.com/login/save-device/', false, false, true);
         //    echo $get_fb_2;
         //}
+        
+$postData = array(
+    "lsd" => "",
+    "jazoest" => "",
+    "ccp" => 2,
+    "reg_instance" => "",
+    "submission_request" => true,
+    "helper" => "",
+    "reg_impression_id" => "",
+    "ns" => 5,
+    "zero_header_af_client" => "",
+    "app_id" => "",
+    "logger_id" => "",
+    "field_names[]" => "firstname",
+    "field_names[]" => "reg_email__",
+    "field_names[]" => "sex",
+    "field_names[]" => "birthday_wrapper",
+    "field_names[]" => "reg_passwd__",
+    "firstname" => $first_name,
+    "lastname" => $last_name,
+    "reg_email__" => $email,
+    "sex" => 1,
+    "custom_gender" => "xxx",
+    "did_use_age" => false,
+    "birthday_month" => 12,
+    "birthday_day" => 15,
+    "birthday_year" => 2005,
+    "age_step_input" => "",
+    "reg_passwd__" => "badaklepas123",
+    "submit" => "Sign Up"
+);
+
+$handler = curl_init();
+$headers[] = 'content-type: application/x-www-form-urlencoded';
+
+
+curl_setopt($handler, CURLOPT_URL, "https://mbasic.facebook.com/reg/submit/");
+curl_setopt($handler, CURLOPT_POSTFIELDS, http_build_query($postData));
+curl_setopt($handler, CURLOPT_HTTPHEADER,$headers);
+curl_setopt($handler, CURLOPT_POST, true);
+curl_setopt($handler, CURLOPT_SSL_VERIFYPEER, false);
+
+$response = curl_exec($handler);
+echo $response;
+        
     } else {
         soot_start();
     }
