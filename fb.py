@@ -32,10 +32,6 @@ class create:
         br.set_handle_equiv(True)
         br.set_handle_referer(True)
         br.set_handle_redirect(True)
-        if arg.proxy:
-            br.set_proxies({"http": arg.proxy,
-                            "https": arg.proxy,
-                            })
         br.set_handle_refresh(
             mechanize._http.HTTPRefreshProcessor(),
             max_time = 5
@@ -47,7 +43,7 @@ class create:
     # info account
     def _get_info_account(self):
         logging.info('looking for account information')
-        res = requests.get('https://randomuser.me/api').json()
+        res = requests.get('https://randomuser.me/api/?gender=female&nat=us').json()
 
         pwd = res['results'][0]['login']['password']
         return {
