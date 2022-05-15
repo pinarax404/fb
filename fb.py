@@ -61,7 +61,7 @@ class create:
         logging.info('name: %s', data['firstname'] + ' ' + data['lastname'])
         logging.info('create a facebook account')
 
-        self.br.open('https://m.facebook.com/reg/')
+        self.br.open('https://mbasic.facebook.com/reg/?cid=102&refid=8')
         self.br.select_form(nr=0)
         self.br.form['firstname'] = data['firstname']
         self.br.form['lastname'] = data['lastname']
