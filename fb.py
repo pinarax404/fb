@@ -11,7 +11,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-dev starting():
+def start():
     print("Starting OK")
 
 if __name__ == '__main__':
