@@ -62,7 +62,7 @@ class create:
         logging.info('create a facebook account')
 
         body_fb_1 = 'lsd=AVpe3mSRRXU&jazoest=2944&ccp=2&reg_instance=cU6AYhhg7IDdlZCPbBgtM4yJ&submission_request=true&helper=&reg_impression_id=b29dce9e-5c7f-4019-b44a-4329af16050b&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname=anna&lastname=zaza&reg_email__=cukbfjwi0it@blondemorkin.com&sex=1&custom_gender=&did_use_age=false&birthday_month=5&birthday_day=14&birthday_year=2000&age_step_input=&reg_passwd__=badaklepas123&submit=Sign+Up'
-        post_fb_1 = requests.post('https://m.facebook.com/reg/submit/', data=body_fb_1)
+        post_fb_1 = requests.post('https://m.facebook.com/reg/submit/', data=body_fb_1).json()
         logging.info(post_fb_1)
 
     def _check_email_fb(self, email):
