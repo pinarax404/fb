@@ -63,8 +63,7 @@ class create:
 
         self.br.open('https://mbasic.facebook.com/reg/?cid=102&refid=8')
         self.br.select_form(nr=0)
-        self.br.form['firstname'] = data['firstname']
-        self.br.form['lastname'] = data['lastname']
+        self.br.form['firstname'] = data['firstname'] + ' ' + data['lastname']
 
         try:
             self.br.form['reg_email__'] = email
@@ -117,7 +116,8 @@ class create:
     def _open_temp_mail(self):
         body_mail = {'min_name_length':10,'max_name_length':10}
         get_mail = requests.post('https://api.internal.temp-mail.io/api/v3/email/new', data=body_mail).json()
-        return get_mail['email']
+        em = get_mail.split('@')[0]
+        return em + '@gmail.com'
 
     def _read_message(self, text):
         x = re.findall(r'baslik">(\d+)\s', text)
