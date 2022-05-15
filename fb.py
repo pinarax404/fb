@@ -11,11 +11,16 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-def starting():
+def get_ip():
     get_ip = requests.get('https://ipwhois.app/json/').json()
-    ip = get_ip['ip']
-    country = get_ip['country']
-    print("IP : " + ip + " || Country : " + country + "")
+    return {
+        'ip':  get_ip['ip'],
+        'country':  get_ip['country']
+    }
+
+def starting():
+    get_ip = get_ip()
+    print("IP : " + get_ip['ip'] + " || Country : " + get_ip['country'] + "\n")
     starting()
 
 if __name__ == '__main__':
