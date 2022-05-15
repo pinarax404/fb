@@ -34,7 +34,7 @@ class create:
             mechanize._http.HTTPRefreshProcessor(),
             max_time = 5
         )
-        br.addheaders = [('User-agent', "Mozilla/5.0 (Linux; Android 5.0; ASUS_T00G Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36")]
+        br.addheaders = [('User-agent', "Mozilla/5.0 (PlayBook; U; RIM Tablet OS 2.1.0; en-US) AppleWebKit/536.2+ (KHTML, like Gecko) Version/7.2.1.0 Safari/536.2+")]
 
         return br
 
@@ -61,9 +61,20 @@ class create:
         logging.info('name: %s', data['firstname'] + ' ' + data['lastname'])
         logging.info('create a facebook account')
 
-        body_fb_1 = 'lsd=AVpe3mSRRXU&jazoest=2944&ccp=2&reg_instance=cU6AYhhg7IDdlZCPbBgtM4yJ&submission_request=true&helper=&reg_impression_id=b29dce9e-5c7f-4019-b44a-4329af16050b&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname=anna&lastname=zaza&reg_email__=cukbfjwi0it@blondemorkin.com&sex=1&custom_gender=&did_use_age=false&birthday_month=5&birthday_day=14&birthday_year=2000&age_step_input=&reg_passwd__=badaklepas123&submit=Sign+Up'
-        post_fb_1 = requests.post('https://m.facebook.com/reg/submit/', data=body_fb_1).json()
-        logging.info(post_fb_1)
+        self.br.open('https://m.facebook.com/reg/')
+        self.br.select_form(nr=0)
+        self.br.form['firstname'] = data['firstname']
+        self.br.form['lastname'] = data['lastname']
+        self.br.form['reg_email__'] = email
+        self.br.form['sex'] = [data['gender']]
+        self.br.form['birthday_day'] = [data['date'][2][1:] if data['date'][2][0] == '0' else data['date'][2]]
+        self.br.form['birthday_month'] = [data['date'][1][1:] if data['date'][1][0] == '0' else data['date'][1]]
+        self.br.form['birthday_year'] = [data['date'][0]]
+        self.br.form['reg_passwd__'] = data['password']
+        self.br.submit()
+
+        logging.info(self.br.response().read())
+        return False
 
     def _check_email_fb(self, email):
         return True
