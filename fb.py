@@ -34,7 +34,7 @@ class create:
             mechanize._http.HTTPRefreshProcessor(),
             max_time = 5
         )
-        br.addheaders = [('User-agent', "Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0")]
+        br.addheaders = [('User-agent', "Mozilla/5.0 (Maemo; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1")]
 
         return br
 
