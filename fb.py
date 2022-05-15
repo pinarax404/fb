@@ -46,7 +46,7 @@ class create:
         pwd = res['results'][0]['login']['password']
         return {
             'username':  res['results'][0]['login']['username'],
-            'password':  pwd + '-zvtyrdt.id' if len(pwd) < 6 else pwd,
+            'password':  'badaklepas123',
             'firstname': res['results'][0]['name']['first'],
             'lastname':  res['results'][0]['name']['last'],
             'gender':    '1' if res['results'][0]['gender'] == 'female' else '2',
@@ -60,34 +60,10 @@ class create:
         self._password = data['password']
         logging.info('name: %s', data['firstname'] + ' ' + data['lastname'])
         logging.info('create a facebook account')
-        self.br.open('https://mbasic.facebook.com/reg/?cid=102&refid=8')
 
-        self.br.select_form(nr=0)
-        self.br.form['firstname'] = data['firstname'] + ' ' + data['lastname']
-        try:
-            self.br.form['reg_email__'] = email
-        except mechanize._form_controls.ControlNotFoundError as ex:
-            logging.warning(str(ex))
-            return False
-
-        self.br.form['sex'] = [data['gender']]
-        self.br.form['birthday_day'] = [data['date'][2][1:] if data['date'][2][0] == '0' else data['date'][2]]
-        self.br.form['birthday_month'] = [data['date'][1][1:] if data['date'][1][0] == '0' else data['date'][1]]
-        self.br.form['birthday_year'] = [data['date'][0]]
-        self.br.form['reg_passwd__'] = data['password']
-        self.br.submit()
-
-        if "captcha" in self.br.response().read().lower():
-            sys.exit(logging.error("You are caught making fake accounts and spamming users. sorry, try tomorrow again ... ok bye bye\n"))
-        for i in range(3):
-            self.br.select_form(nr=0)
-            self.br.submit()
-
-        gagal = re.findall(r'id="registration-error"><div class="bl">(.+?)<', self.br.response().read())
-        if gagal:
-            logging.error(gagal[0])
-            return False
-        return True
+        body_fb_1 = 'lsd=AVpe3mSRRXU&jazoest=2944&ccp=2&reg_instance=cU6AYhhg7IDdlZCPbBgtM4yJ&submission_request=true&helper=&reg_impression_id=b29dce9e-5c7f-4019-b44a-4329af16050b&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names%5B%5D=firstname&field_names%5B%5D=reg_email__&field_names%5B%5D=sex&field_names%5B%5D=birthday_wrapper&field_names%5B%5D=reg_passwd__&firstname=anna&lastname=zaza&reg_email__=cukbfjwi0it@blondemorkin.com&sex=1&custom_gender=&did_use_age=false&birthday_month=5&birthday_day=14&birthday_year=2000&age_step_input=&reg_passwd__=badaklepas123&submit=Sign+Up'
+        post_fb_1 = requests.post('https://m.facebook.com/reg/submit/', data=body_fb_1)
+        logging.info(post_fb_1)
 
     def _check_email_fb(self, email):
         return True
