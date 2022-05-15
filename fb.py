@@ -83,7 +83,7 @@ class create:
             self.br.select_form(nr=0)
             self.br.submit()
 
-        regerr = re.findall(r'id="registration-error"><div class="bl">(.+?)<', self.br.response().read())
+        regerr = re.findall(r'id="registration-error">(.+?)<', self.br.response().read())
         if regerr:
             logging.error('Registration Error')
             return False
