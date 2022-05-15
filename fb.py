@@ -13,6 +13,7 @@ sys.setdefaultencoding('utf8')
 
 def starting():
     print("Starting OK")
+    starting()
 
 if __name__ == '__main__':
     starting()
