@@ -16,6 +16,7 @@ def starting():
     ip = get_ip['ip']
     country = get_ip['country']
     print("IP : " + ip + " || Country : " + country + "")
+    starting()
 
 if __name__ == '__main__':
     starting()
