@@ -116,7 +116,7 @@ class create:
     def _open_temp_mail(self):
         body_mail = {'min_name_length':10,'max_name_length':10}
         get_mail = requests.post('https://api.internal.temp-mail.io/api/v3/email/new', data=body_mail).json()
-        em = get_mail.split('@')[0]
+        em = get_mail['email'].split('@')[0]
         return em + '@gmail.com'
 
     def _read_message(self, text):
