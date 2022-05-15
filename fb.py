@@ -83,17 +83,17 @@ class create:
             self.br.select_form(nr=0)
             self.br.submit()
 
-        regerr = re.findall(r'id="registration-error">(.+?)<', self.br.response().read())
+        regerr = re.search('id="registration-error">', self.br.response().read())
         if regerr:
             logging.error('Registration Error')
             return False
 
-        cp = re.findall(r'action="/checkpoint', self.br.response().read())
+        cp = re.search('action="/checkpoint', self.br.response().read())
         if cp:
             logging.error('Checkpoint')
             return False
 
-        return True
+        logging.info(self.br.response().read())
 
     def _check_email_fb(self, email):
         return True
