@@ -18,9 +18,6 @@ class create:
             format='\r%(levelname)s:%(name)s: %(message)s'
         )
         self.create_total = 0
-        self.blacklist_email = []
-        self.temp_email_url = 'https://tempmail.net'
-
         self.__main__()
 
     def _browser_options(self):
@@ -113,11 +110,8 @@ class create:
     # mail
     def _open_temp_mail(self):
         body_mail = {'min_name_length':10,'max_name_length':10}
-        get_mail = requests.post('https://api.internal.temp-mail.io/api/v3/email/new', data=body_mail)
+        get_mail = requests.post('https://api.internal.temp-mail.io/api/v3/email/new', data=body_mail).json()
         return get_mail['email']
-
-    def _find_email(self, text):
-        return re.findall(r'value="(.+@.+)"', text)[0]
 
     def _read_message(self, text):
         x = re.findall(r'baslik">(\d+)\s', text)
@@ -137,10 +131,6 @@ class create:
             email_found, check, max_ = False, True, 0
             while True:
                 self._mail = self._open_temp_mail()
-
-                if '@' + self._mail.split('@')[1].split('.')[0] in self.blacklist_email:
-                    logging.error('blacklist email: %s', self._mail)
-                    break
 
                 if not email_found:
                     logging.info('obtained email: %s', self._mail)
