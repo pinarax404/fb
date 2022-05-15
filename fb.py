@@ -34,7 +34,7 @@ class create:
             mechanize._http.HTTPRefreshProcessor(),
             max_time = 5
         )
-        br.addheaders = [('User-agent', "Mozilla/5.0 (PlayBook; U; RIM Tablet OS 2.1.0; en-US) AppleWebKit/536.2+ (KHTML, like Gecko) Version/7.2.1.0 Safari/536.2+")]
+        br.addheaders = [('User-agent', "Mozilla/4.0 (Windows; MSIE 6.0; Windows NT 5.2)")]
 
         return br
 
@@ -65,13 +65,23 @@ class create:
         self.br.select_form(nr=0)
         self.br.form['firstname'] = data['firstname']
         self.br.form['lastname'] = data['lastname']
-        self.br.form['reg_email__'] = email
+
+        try:
+            self.br.form['reg_email__'] = email
+        except mechanize._form_controls.ControlNotFoundError as ex:
+            logging.warning(str(ex))
+            return False
+
         self.br.form['sex'] = [data['gender']]
         self.br.form['birthday_day'] = [data['date'][2][1:] if data['date'][2][0] == '0' else data['date'][2]]
         self.br.form['birthday_month'] = [data['date'][1][1:] if data['date'][1][0] == '0' else data['date'][1]]
         self.br.form['birthday_year'] = [data['date'][0]]
         self.br.form['reg_passwd__'] = data['password']
         self.br.submit()
+
+        for i in range(3):
+            self.br.select_form(nr=0)
+            self.br.submit()
 
         logging.info(self.br.response().read())
         return False
