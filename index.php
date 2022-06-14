@@ -1,6 +1,6 @@
 <?php
 
-//ini_set('display_errors', "0");
+ini_set('display_errors', "0");
 system('clear');
 
 function rplc($start, $end, $data) {
@@ -33,7 +33,7 @@ function soot_start() {
     //********************//
 
 
-    $get_ip     = curl_attr('https://ipwhois.app/json/');
+    $get_ip = curl_attr('https://ipwhois.app/json/');
     if($get_ip !== false) {
         $res_ip = json_decode($get_ip, true);
         echo "\033[1;37m========================================\033[1;37m\n";
