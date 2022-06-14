@@ -5,8 +5,8 @@ system('clear');
 
 function rplc($start, $end, $data) {
     $rt = explode($start, $data)[1];
-    $rt = explode($end, $rt)[0];
-    return $rt;
+    $rts = explode($end, $rt)[0];
+    return $rts;
 }
 
 function random_name() {
