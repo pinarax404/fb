@@ -60,7 +60,7 @@ function soot_start() {
         echo "\033[1;37m◆ Phone Number      : " . $phone_number . "\033[1;37m\n";
         echo "\033[1;37m◆ Creating          : ";
 
-        $get_fb_attr = curl_attr_fb('https://mobile.facebook.com/r.php?soft=hjk', false, true, false);
+        $get_fb_attr = curl_attr_fb('https://m.facebook.com/r.php?soft=hjk', false, true, false);
         echo $get_fb_attr;
         
 
@@ -94,7 +94,7 @@ function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false)
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'content-type: application/x-www-form-urlencoded',
-        'user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36'
+        'user-agent: Mozilla/5.0 (Android 4.4; Tablet; rv:41.0) Gecko/41.0 Firefox/41.0'
     ));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
