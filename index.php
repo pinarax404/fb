@@ -20,7 +20,7 @@ function random_name() {
 }
 
 function random_nomer() {
-	return '{]
+	return '{
         "nomer":"'.rand(111111111,999999999).'"
 	}';
 }
