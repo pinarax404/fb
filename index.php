@@ -60,7 +60,7 @@ function soot_start() {
         echo "\033[1;37m◆ Phone Number      : " . $phone_number . "\033[1;37m\n";
         echo "\033[1;37m◆ Creating          : ";
 
-        $get_fb_attr = curl_attr_fb('https://m.facebook.com/r.php?soft=hjk', false, true, false);
+        $get_fb_attr = curl_attr_fb('https://mobile.facebook.com/r.php?soft=hjk', false, true, false);
         echo $get_fb_attr;
         
 
