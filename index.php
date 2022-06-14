@@ -61,11 +61,7 @@ function soot_start() {
         echo "\033[1;37m◆ Creating          : ";
 
         $get_fb_attr = curl_attr_fb('https://m.facebook.com/r.php?soft=hjk', false, true, false);
-        if($get_fb_attr) {
-			$rplc_post_url = rplc('<form method="post" action="/reg/submit/', '" class="', $get_fb_attr);
-			$post_url = "https://m.facebook.com/reg/submit/" . $rplc_post_url;
-			echo $post_url;
-		}
+        echo $get_fb_attr;
         
 
     } else {
