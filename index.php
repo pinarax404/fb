@@ -47,7 +47,7 @@ function soot_start() {
 
 
     $get_attr   = random_name();
-    $get_nomer  = random_name();
+    $get_nomer  = random_nomer();
 
     if($get_attr !== false && $get_nomer !== false) {
         $res_attr   = json_decode($get_attr, true);
