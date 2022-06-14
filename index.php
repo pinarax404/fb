@@ -20,7 +20,7 @@ function random_name() {
 }
 
 function random_nomer() {
-	return '{
+	return '{]
         "nomer":"'.rand(111111111,999999999).'"
 	}';
 }
@@ -31,7 +31,6 @@ function soot_start() {
     //********************//
     $default_password = 'badaklepas123';
     //********************//
-
 
     $get_ip = curl_attr('https://ipwhois.app/json/');
     if($get_ip !== false) {
