@@ -55,23 +55,22 @@ function soot_start() {
 
         $first_name     = strtolower($res_attr['depan']);
         $last_name      = strtolower($res_attr['belakang']);
-        $phone_number   = $res_nomer['nomer'];
+        $phone_number   = "+6285" . $res_nomer['nomer'];
 
         echo "\033[1;37m◆ Full Name         : " . $first_name . ' ' . $last_name . "\033[1;37m\n";
         echo "\033[1;37m◆ Phone Number      : " . $phone_number . "\033[1;37m\n";
         echo "\033[1;37m◆ Creating          : ";
 
-        $data_get_fb_attr = 'lsd=AVo4MIYVlyE&jazoest=2937&m_ts=1652047974&li=ZkB4YmqXLHh9GPuw23jDlRdb&try_number=0&unrecognized_tries=0&email=&pass=&sign_up=Buat Akun Baru&bi_xrwh=0&_fb_noscript=true';
-        $get_fb_attr = curl_attr_fb('https://m.facebook.com/r.php?soft=hjk', $data_get_fb_attr, true, false);
+        $get_fb_attr = curl_attr_fb('https://m.facebook.com/r.php?soft=hjk', false, true, false);
         if($get_fb_attr) {
 			$rplc_post_url = rplc('<form method="post" action="/reg/submit/', '" class="', $get_fb_attr);
-			$post_url = 'https://m.facebook.com/reg/submit/' . $rplc_post_url;
+			$post_url = "https://m.facebook.com/reg/submit/" . $rplc_post_url;
 			echo $post_url;
 		}
         
 
     } else {
-        soot_start();
+        
     }
 }
 
