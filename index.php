@@ -60,10 +60,23 @@ function soot_start() {
         echo "\033[1;37m◆ Phone Number      : " . $phone_number . "\033[1;37m\n";
         echo "\033[1;37m◆ Creating          : ";
 
-        $get_fb_attr = curl_attr_fb('https://m.facebook.com/r.php?soft=hjk', false, true, false);
-        echo $get_fb_attr;
-        
+        $get_fb_attr = curl_attr_fb('https://m.facebook.com/r.php?soft=hjk', false, true, false, false);
+        if($get_fb_attr !== false  && strpos($get_fb_attr, '/reg/submit/') !== false && strpos($get_fb_attr, 'reg_instance') !== false && strpos($get_fb_attr, 'reg_impression_id') !== false && strpos($get_fb_attr, 'logger_id') !== false) {
 
+			$form_url = rplc('<form method="post" action="/reg/submit', '"', $get_fb_attr);
+			$reg_instance = rplc('name="reg_instance" value="', '"', $get_fb_attr);
+			$reg_impression_id = rplc('name="reg_impression_id" value="', '"', $get_fb_attr);
+			$logger_id = rplc('name="logger_id" value="', '"', $get_fb_attr);
+
+			$data_sign_up = 'lsd=AVpWajjxTAk&jazoest=21035&ccp=2&reg_instance='.$reg_instance.'&submission_request=true&helper=&reg_impression_id='.$reg_impression_id.'&ns=0&zero_header_af_client=&app_id=&logger_id='.$logger_id.'&field_names[]=firstname&firstname='.$first_name.'&lastname='.$last_name.'&field_names[]=birthday_wrapper&birthday_month=6&birthday_day=17&birthday_year=1997&age_step_input=&did_use_age=&field_names[]=reg_email__&reg_email__='.$phone_number.'&field_names[]=sex&sex=1&custom_gender=&field_names[]=reg_passwd__&reg_passwd__='.$default_password.'&submit=Sign Up&name_suggest_elig=false&was_shown_name_suggestions=false&did_use_suggested_name=false&use_custom_gender=&guid=';
+			$sign_up = curl_attr_fb('https://m.facebook.com/reg/submit' . $form_url, $data_sign_up, false, false, true);
+			if($sign_up !== false) {
+				echo "\033[1;32mSuccess\033[1;37m\n";
+				echo $sign_up;
+			} else {
+				echo "\033[1;31mFailed\033[1;37m\n";
+			}
+		}
     } else {
         
     }
@@ -89,12 +102,12 @@ function curl_attr($url) {
     }
 }
 
-function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false) {
+function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false, $doublecoki = false) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'content-type: application/x-www-form-urlencoded',
-        'user-agent: Mozilla/5.0 (Android 4.4; Tablet; rv:41.0) Gecko/41.0 Firefox/41.0'
+        'user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13C75 Safari/601.1'
     ));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -108,6 +121,10 @@ function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false)
     if($readcookies) {
         curl_setopt($ch, CURLOPT_COOKIEFILE, 'coki.txt');
     }
+	if($doublecoki) {
+		curl_setopt($ch, CURLOPT_COOKIEJAR, 'coki.txt');
+		curl_setopt($ch, CURLOPT_COOKIEFILE, 'coki.txt');
+	}
     curl_setopt($ch, CURLOPT_TIMEOUT, 25);
     $respons_data = curl_exec($ch);
     $respons_header = substr($respons_data, 0, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
