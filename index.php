@@ -93,13 +93,9 @@ function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false,
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Linux; Android 10; GM1903 Build/QKQ1.190716.003; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.92 Mobile Safari/537.36 Instagram 113.0.0.39.122 Android (29/10; 420dpi; 1080x2134; OnePlus; GM1903; OnePlus7; qcom; sv_SE; 175574628)");
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'content-type: application/x-www-form-urlencoded'
-    ));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
     if($body) {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
     }
