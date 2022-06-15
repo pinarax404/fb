@@ -48,23 +48,19 @@ function soot_start() {
     $get_attr   = random_name();
     $get_nomer  = random_nomer();
 
-    if($get_attr !== false && $get_nomer !== false) {
-        $res_attr   = json_decode($get_attr, true);
-        $res_nomer  = json_decode($get_nomer, true);
+	$res_attr   = json_decode($get_attr, true);
+	$res_nomer  = json_decode($get_nomer, true);
 
-        $first_name     = strtolower($res_attr['depan']);
-        $last_name      = strtolower($res_attr['belakang']);
-        $phone_number   = "+6285" . $res_nomer['nomer'];
+	$first_name     = strtolower($res_attr['depan']);
+	$last_name      = strtolower($res_attr['belakang']);
+	$phone_number   = "+6285" . $res_nomer['nomer'];
 
-        echo "\033[1;37m◆ Full Name         : " . $first_name . ' ' . $last_name . "\033[1;37m\n";
-        echo "\033[1;37m◆ Phone Number      : " . $phone_number . "\033[1;37m\n";
-        echo "\033[1;37m◆ Creating          : ";
+	echo "\033[1;37m◆ Full Name         : " . $first_name . ' ' . $last_name . "\033[1;37m\n";
+	echo "\033[1;37m◆ Phone Number      : " . $phone_number . "\033[1;37m\n";
+	echo "\033[1;37m◆ Creating          : ";
 
-        $get_fb_attr = curl_attr_fb('https://web.facebook.com/reg/', false, true, false, false);
-        echo $get_fb_attr;
-    } else {
-        
-    }
+	$get_fb_attr = curl_attr_fb('https://mobile.facebook.com/r.php', false, true, false, false);
+	echo $get_fb_attr;
 }
 
 function curl_attr($url) {
@@ -79,7 +75,7 @@ function curl_attr($url) {
     $respons_header = substr($respons_data, 0, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
     $respons_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
-    
+
     if($respons_http_code == 200) {
         return $respons_data;
     } else {
@@ -90,7 +86,7 @@ function curl_attr($url) {
 function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false, $doublecoki = false) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36");
+	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Linux; Android 10; GM1903 Build/QKQ1.190716.003; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.92 Mobile Safari/537.36 Instagram 113.0.0.39.122 Android (29/10; 420dpi; 1080x2134; OnePlus; GM1903; OnePlus7; qcom; sv_SE; 175574628)");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'content-type: application/x-www-form-urlencoded'
     ));
@@ -116,7 +112,7 @@ function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false,
     $respons_header = substr($respons_data, 0, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
     $respons_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
-    
+
     if($respons_http_code == 200) {
         return $respons_data;
     } else {
