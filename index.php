@@ -100,8 +100,7 @@ function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false,
     curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'content-type: application/x-www-form-urlencoded',
-		'x-fb-lsd: AVrn5DcCPtE'
+        'content-type: application/x-www-form-urlencoded'
     ));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
