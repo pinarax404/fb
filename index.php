@@ -61,15 +61,7 @@ function soot_start() {
         echo "\033[1;37m◆ Creating          : ";
 
         $get_fb_attr = curl_attr_fb('https://web.facebook.com/reg/', false, true, false, false);
-        if($get_fb_attr !== false  && strpos($get_fb_attr, 'facebook.com/reg/') !== false && strpos($get_fb_attr, 'ri') !== false && strpos($get_fb_attr, 'reg_instance') !== false) {
-
-			//$form_url = rplc('<form method="post" action="/reg/submit', '"', $get_fb_attr);
-			//$reg_instance = rplc('name="reg_instance" value="', '"', $get_fb_attr);
-			//$reg_impression_id = rplc('name="reg_impression_id" value="', '"', $get_fb_attr);
-			//$logger_id = rplc('name="logger_id" value="', '"', $get_fb_attr);
-
-			echo $get_fb_attr;
-		}
+        echo $get_fb_attr;
     } else {
         
     }
