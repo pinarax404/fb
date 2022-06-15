@@ -60,7 +60,24 @@ function soot_start() {
 	echo "\033[1;37m◆ Creating          : ";
 
 	$get_fb_attr = curl_attr_fb('https://mobile.facebook.com/r.php', false, true, false, false);
-	echo $get_fb_attr;
+	if($get_fb_attr !== false && strpos($get_fb_attr, '/reg/submit') !== false && strpos($get_fb_attr, 'reg_instance') !== false && strpos($get_fb_attr, 'reg_impression_id') !== false && strpos($get_fb_attr, 'logger_id') !== false) {
+
+		$post_url = rplc('method="post" action="/reg/submit', '"', $get_fb_attr);
+		$reg_instance = rplc('name="reg_instance" value="', '"', $get_fb_attr);
+		$reg_impression_id = rplc('name="reg_impression_id" value="', '"', $get_fb_attr);
+		$logger_id = rplc('name="logger_id" value="', '"', $get_fb_attr);
+
+		$data_sign_up = 'lsd=AVrWJ90rOGk&jazoest=2902&ccp=2&reg_instance='.$reg_instance.'&submission_request=true&helper=&reg_impression_id='.$reg_impression_id.'&ns=0&zero_header_af_client=&app_id=&logger_id='.$logger_id.'&field_names[]=firstname&firstname='.$first_name.'&lastname='.$last_name.'&field_names[]=birthday_wrapper&birthday_day=27&birthday_month=8&birthday_year=1996&age_step_input=&did_use_age=&field_names[]=reg_email__&reg_email__='.$phone_number.'&field_names[]=sex&sex=1&custom_gender=&field_names[]=reg_passwd__&reg_passwd__='.$default_password.'&submit=Gå med&name_suggest_elig=false&was_shown_name_suggestions=false&did_use_suggested_name=false&use_custom_gender=&guid=';
+		$sign_up = curl_attr_fb('https://mobile.facebook.com/reg/submit' . $post_url, $data_sign_up, false, false, true);
+		if($sign_up !== false) {
+			echo "\033[1;32mSuccess\033[1;37m\n";
+			echo $sign_up;
+		} else {
+			echo "\033[1;31mFailed\033[1;37m\n";
+		}
+	} else {
+		echo "\033[1;31mFailed\033[1;37m\n";
+	}
 }
 
 function curl_attr($url) {
