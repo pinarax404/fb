@@ -56,7 +56,7 @@ function soot_start() {
 	echo "\033[1;37m◆ Creating          : ";
 
 	$data_sign_up = 'lsd=AVrWJ90rOGk&jazoest=2902&ccp=2&reg_instance=cHKpYr8H4w3doYkCK1m-wq26&submission_request=true&helper=&reg_impression_id=9fa34bc6-f497-4fce-98f7-6742591904cb&ns=0&zero_header_af_client=&app_id=&logger_id=3af9126f-a7ba-4748-bf6d-dc019784ae11&field_names[]=firstname&firstname='.$first_name.'&lastname='.$last_name.'&field_names[]=birthday_wrapper&birthday_day=27&birthday_month=8&birthday_year=1996&age_step_input=&did_use_age=&field_names[]=reg_email__&reg_email__='.$phone_number.'&field_names[]=sex&sex=1&custom_gender=&field_names[]=reg_passwd__&reg_passwd__='.$default_password.'&submit=Gå med&name_suggest_elig=false&was_shown_name_suggestions=false&did_use_suggested_name=false&use_custom_gender=&guid=';
-	$sign_up = curl_attr_fb('https://m.facebook.com/reg/submit/', $data_sign_up, false, false, false);
+	$sign_up = curl_attr_fb('https://m.facebook.com/reg/submit/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNjU1NzkxMjY2LCJjYWxsc2l0ZV9pZCI6OTA3OTI0NDAyOTQ4MDU4fQ%3D%3D&multi_step_form=1&skip_suma=0&shouldForceMTouch=1', $data_sign_up, false, false, false);
 	echo $sign_up;
 }
 
