@@ -85,7 +85,8 @@ function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false,
     curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 		'Content-Type: application/x-www-form-urlencoded',
-		'user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'
+		'user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
+		'cookie: datr=ol6xYry63hhJb1LaNznnKsHZ; m_pixel_ratio=1; wd=1920x937; x-referer=eyJyIjoiL3IucGhwP3NvZnQ9aGprIiwiaCI6Ii9yLnBocD9zb2Z0PWhqayIsInMiOiJtIn0%3D; fr=0PDlya6lKVz09cQ5b..BisV6i.st.AAA.0.0.BisV6j.AWWMngIOJGY;'
 	));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
