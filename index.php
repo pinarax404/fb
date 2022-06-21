@@ -64,7 +64,7 @@ function soot_start() {
             "http" => array(
                 "method" => "POST",
                 "header" => "Content-Type: application/x-www-form-urlencoded",
-                "content" => http_build_query($data)
+                "content" => $data
             )
 	);
 	$page = file_get_contents($url, false, stream_context_create($options));
