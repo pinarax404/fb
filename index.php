@@ -117,7 +117,7 @@ function curl_attr_fb($url, $body) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_COOKIE, "datr=ol6xYry63hhJb1LaNznnKsHZ; m_pixel_ratio=1; wd=1920x937; x-referer=eyJyIjoiL3IucGhwP3NvZnQ9aGprIiwiaCI6Ii9yLnBocD9zb2Z0PWhqayIsInMiOiJtIn0%3D; fr=0PDlya6lKVz09cQ5b..BisV6i.st.AAA.0.0.BisV6j.AWWMngIOJGY;");
+    //curl_setopt($ch, CURLOPT_COOKIE, "datr=ol6xYry63hhJb1LaNznnKsHZ; m_pixel_ratio=1; wd=1920x937; x-referer=eyJyIjoiL3IucGhwP3NvZnQ9aGprIiwiaCI6Ii9yLnBocD9zb2Z0PWhqayIsInMiOiJtIn0%3D; fr=0PDlya6lKVz09cQ5b..BisV6i.st.AAA.0.0.BisV6j.AWWMngIOJGY;");
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
