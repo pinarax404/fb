@@ -44,12 +44,8 @@ function soot_start() {
         echo "\033[1;37m========================================\033[1;37m\n";
     }
 
-
-    $get_attr   = random_name();
-    $get_nomer  = random_nomer();
-
-	$res_attr   = json_decode($get_attr, true);
-	$res_nomer  = json_decode($get_nomer, true);
+	$res_attr   = json_decode(random_name(), true);
+	$res_nomer  = json_decode(random_nomer(), true);
 
 	$first_name     = strtolower($res_attr['depan']);
 	$last_name      = strtolower($res_attr['belakang']);
@@ -61,12 +57,7 @@ function soot_start() {
 
 	$data_sign_up = 'lsd=AVrWJ90rOGk&jazoest=2902&ccp=2&reg_instance=cHKpYr8H4w3doYkCK1m-wq26&submission_request=true&helper=&reg_impression_id=9fa34bc6-f497-4fce-98f7-6742591904cb&ns=0&zero_header_af_client=&app_id=&logger_id=3af9126f-a7ba-4748-bf6d-dc019784ae11&field_names[]=firstname&firstname='.$first_name.'&lastname='.$last_name.'&field_names[]=birthday_wrapper&birthday_day=27&birthday_month=8&birthday_year=1996&age_step_input=&did_use_age=&field_names[]=reg_email__&reg_email__='.$phone_number.'&field_names[]=sex&sex=1&custom_gender=&field_names[]=reg_passwd__&reg_passwd__='.$default_password.'&submit=Gå med&name_suggest_elig=false&was_shown_name_suggestions=false&did_use_suggested_name=false&use_custom_gender=&guid=';
 	$sign_up = curl_attr_fb('https://m.facebook.com/reg/submit/', $data_sign_up, false, false, false);
-	if($sign_up !== false) {
-		echo "\033[1;32mSuccess\033[1;37m\n";
-		echo $sign_up;
-	} else {
-		echo "\033[1;31mFailed\033[1;37m\n";
-	}
+	echo $sign_up;
 }
 
 function curl_attr($url) {
@@ -89,7 +80,7 @@ function curl_attr($url) {
     }
 }
 
-function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false, $doublecoki = false) {
+function curl_attr_fb_old($url, $body, $createcookies = false, $readcookies = false, $doublecoki = false) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Linux; Android 10; GM1903 Build/QKQ1.190716.003; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.92 Mobile Safari/537.36 Instagram 113.0.0.39.122 Android (29/10; 420dpi; 1080x2134; OnePlus; GM1903; OnePlus7; qcom; sv_SE; 175574628)");
@@ -120,4 +111,21 @@ function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false,
     } else {
         return false;
     }
+}
+
+function curl_attr_fb($url, $body) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_COOKIE, "datr=ol6xYry63hhJb1LaNznnKsHZ; m_pixel_ratio=1; wd=1920x937; x-referer=eyJyIjoiL3IucGhwP3NvZnQ9aGprIiwiaCI6Ii9yLnBocD9zb2Z0PWhqayIsInMiOiJtIn0%3D; fr=0PDlya6lKVz09cQ5b..BisV6i.st.AAA.0.0.BisV6j.AWWMngIOJGY;");
+    curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+	$respons_data = curl_exec($ch);
+	curl_close($ch);
+	return $respons_data;
 }
