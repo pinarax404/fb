@@ -80,12 +80,13 @@ function curl_attr($url) {
     }
 }
 
-function curl_attr_fb_old($url, $body, $createcookies = false, $readcookies = false, $doublecoki = false) {
+function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false, $doublecoki = false) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Linux; Android 10; GM1903 Build/QKQ1.190716.003; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.92 Mobile Safari/537.36 Instagram 113.0.0.39.122 Android (29/10; 420dpi; 1080x2134; OnePlus; GM1903; OnePlus7; qcom; sv_SE; 175574628)");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     if($body) {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
@@ -111,21 +112,4 @@ function curl_attr_fb_old($url, $body, $createcookies = false, $readcookies = fa
     } else {
         return false;
     }
-}
-
-function curl_attr_fb($url, $body) {
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    //curl_setopt($ch, CURLOPT_COOKIE, "datr=ol6xYry63hhJb1LaNznnKsHZ; m_pixel_ratio=1; wd=1920x937; x-referer=eyJyIjoiL3IucGhwP3NvZnQ9aGprIiwiaCI6Ii9yLnBocD9zb2Z0PWhqayIsInMiOiJtIn0%3D; fr=0PDlya6lKVz09cQ5b..BisV6i.st.AAA.0.0.BisV6j.AWWMngIOJGY;");
-    curl_setopt($ch, CURLOPT_USERAGENT, "");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-	$respons_data = curl_exec($ch);
-	curl_close($ch);
-	return $respons_data;
 }
