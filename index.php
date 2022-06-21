@@ -58,14 +58,17 @@ function soot_start() {
 	//$data_sign_up = 'lsd=AVppS7WxdpI&jazoest=21005&ccp=2&reg_instance=G2OxYvGyighAzUbD0BU315Go&submission_request=true&helper=&reg_impression_id=bd9fface-98a5-451f-87e6-83de386c02f8&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names[]=firstname&field_names[]=reg_email__&field_names[]=sex&field_names[]=birthday_wrapper&field_names[]=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$phone_number.'&sex=1&custom_gender=&did_use_age=false&birthday_month=4&birthday_day=5&birthday_year=1997&age_step_input=&reg_passwd__='.$default_password.'&submit=Sign+Up';
 	//$sign_up = curl_attr_fb('https://mbasic.facebook.com/reg/submit/?cid=102', $data_sign_up, false, false, true);
 
-    $curl = curl_init('https://m.facebook.com/reg/submit/?cid=102');
-    curl_setopt($curl, CURLOPT_POST, true);
-    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query('lsd=AVppS7WxdpI&jazoest=21005&ccp=2&reg_instance=G2OxYvGyighAzUbD0BU315Go&submission_request=true&helper=&reg_impression_id=bd9fface-98a5-451f-87e6-83de386c02f8&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names[]=firstname&field_names[]=reg_email__&field_names[]=sex&field_names[]=birthday_wrapper&field_names[]=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$phone_number.'&sex=1&custom_gender=&did_use_age=false&birthday_month=4&birthday_day=5&birthday_year=1997&age_step_input=&reg_passwd__='.$default_password.'&submit=Sign+Up'));
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
-    $response = curl_exec($curl);
-    curl_close($curl);
-	echo $response;
+	$url = "https://mbasic.facebook.com/reg/submit/?cid=102";
+	$data = 'lsd=AVppS7WxdpI&jazoest=21005&ccp=2&reg_instance=G2OxYvGyighAzUbD0BU315Go&submission_request=true&helper=&reg_impression_id=bd9fface-98a5-451f-87e6-83de386c02f8&ns=0&zero_header_af_client=&app_id=&logger_id=&field_names[]=firstname&field_names[]=reg_email__&field_names[]=sex&field_names[]=birthday_wrapper&field_names[]=reg_passwd__&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$phone_number.'&sex=1&custom_gender=&did_use_age=false&birthday_month=4&birthday_day=5&birthday_year=1997&age_step_input=&reg_passwd__='.$default_password.'&submit=Sign+Up';
+	$options = array(
+            "http" => array(
+                "method" => "POST",
+                "header" => "Content-Type: application/x-www-form-urlencoded",
+                "content" => http_build_query($data)
+            )
+	);
+	$page = file_get_contents($url, false, stream_context_create($options));
+	echo $page;
 }
 
 function curl_attr($url) {
