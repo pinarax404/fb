@@ -56,7 +56,7 @@ function soot_start() {
 	echo "\033[1;37m◆ Creating          : ";
 
 	$data_sign_up = 'jazoest=21018&lsd=AVofQDxoui4&firstname='.$first_name.'&lastname='.$last_name.'&reg_email__='.$phone_number.'&reg_email_confirmation__=&reg_passwd__='.$default_password.'&birthday_month=2&birthday_day=22&birthday_year=1997&birthday_age=&did_use_age=false&sex=1&preferred_pronoun=&custom_gender=&referrer=&asked_to_login=0&use_custom_gender=&terms=on&ns=0&ri=55d8f69b-d5bb-4123-9d49-8b7efd759662&action_dialog_shown=&invid=&a=&oi=&locale=en_US&app_bundle=&app_data=&reg_data=&app_id=&fbpage_id=&reg_oid=&reg_instance=rWGxYlBdYCOqW9Fa-vPd6uv8&openid_token=&uo_ip=&guid=&key=&re=&mid=&fid=&reg_dropoff_id=&reg_dropoff_code=&ignore=captcha|reg_email_confirmation__&captcha_persist_data=AZkRZ0EPfO3StUaFU1YS_JpqY4YMlcAcHq-AtKRjDUE6lNNeFXW5r31Pqv8_pDySgQ9oJBNg_NSYD8ZCJ4SiGcSYRqc2eWjNcchYAMmRo8EG25KKndUFpnt7aXhVt5GKwDA4A7zHza1tj5VgOfk1HlzBMbUpf4mUI6PK-Bl_BQZ9BRAF7TenAO0XwUNgf4kun-RcX-37DXco6UssJl0AVfP7C1OIHHFdJd2c0iMWc9W2DMN3BWSAsVXO4652MqpxjFX-MYbS5vZwqfnXzZBe-UgYggqpRNDf8PnSYQuEShCgFg-PevJFMKn5JZCLFcHebzIWDMNjGKgkiM7JskakYTcCYOK_MAhzZ8V_KqwhgwkEEIDhzAs_SRgLtEPPX61276U&captcha_response=&__user=0&__a=1&__dyn=7xe6FomK36Q5E5ObwKBWo5O12wAxu13wqovzEdEc8uw9-3K4o1j8hwem0nCq1ewcG0KEswaq0yE5ufz81sbzo5-0me2218w5uwbO7E2swdq0Ho2ewnE3fw5rwSyE1582ZwrU&__csr=&__req=8&__hs=19164.BP:DEFAULT.2.0.0.0.0&dpr=1&__ccg=EXCELLENT&__rev=1005718774&__s=2ps9e9:18rhuo:8700xa&__hsi=7111572701225986168-0&__comet_req=0&__spin_r=1005718774&__spin_b=trunk&__spin_t=1655792049';
-	$sign_up = curl_attr_fb('https://www.facebook.com/ajax/register.php', $data_sign_up, false, false, false);
+	$sign_up = curl_attr_fb('https://www.facebook.com/ajax/register.php', $data_sign_up, false, false, true);
 	echo $sign_up;
 }
 
@@ -84,13 +84,12 @@ function curl_attr_fb($url, $body, $createcookies = false, $readcookies = false,
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-		'user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
-		'cookie: datr=ol6xYry63hhJb1LaNznnKsHZ; m_pixel_ratio=1; wd=1920x937; x-referer=eyJyIjoiL3IucGhwP3NvZnQ9aGprIiwiaCI6Ii9yLnBocD9zb2Z0PWhqayIsInMiOiJtIn0%3D; fr=0PDlya6lKVz09cQ5b..BisV6i.st.AAA.0.0.BisV6j.AWWMngIOJGY;'
+		'user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'
 	));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    //curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	//curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+	//curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     if($body) {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
     }
